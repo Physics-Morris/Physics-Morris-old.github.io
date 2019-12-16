@@ -1,0 +1,564 @@
+<div id="glowscript" class="glowscript">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" href="https://s3.amazonaws.com/glowscript/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="https://s3.amazonaws.com/glowscript/css/ide.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/glow.2.9.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/RSrun.2.9.min.js"></script>
+    <script type="text/javascript"><!--//--><![CDATA[//><!--
+    
+    // START JAVASCRIPT
+    ;(function() {;
+    var RS_modules = {};
+    var scene, running, t;
+    RS_modules.pythonize = {};
+    
+    (function(){
+        function strings() {
+            var string_funcs, exclude, name;
+            string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+            if (!arguments.length) {
+                exclude = (function(){
+                    var s = RS_set();
+                    s.jsset.add("split");
+                    s.jsset.add("replace");
+                    return s;
+                })();
+            } else if (arguments[0]) {
+                exclude = Array.prototype.slice.call(arguments);
+            } else {
+                exclude = null;
+            }
+            if (exclude) {
+                string_funcs = string_funcs.difference(set(exclude));
+            }
+            var RS_Iter0 = string_funcs;
+            RS_Iter0 = ((typeof RS_Iter0[Symbol.iterator] === "function") ? (RS_Iter0 instanceof Map ? RS_Iter0.keys() : RS_Iter0) : Object.keys(RS_Iter0));
+            for (var RS_Index0 of RS_Iter0) {
+                name = RS_Index0;
+                (RS_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name] = (RS_expr_temp = RS_str.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name];
+            }
+        };
+    
+        RS_modules.pythonize.strings = strings;
+    })();
+    async function __main__() {
+        var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, RS_unpack, M, m, g, theta, k, m_a_x, m_a_y, M_a_x, running, b1, b2, s0, s3, s1, s2, A, B, C, D, E, F, apex, floor, ball, g1, g2, m_v, M_v, m_E, M_E, total_E, dt, t, i, tmp_M, tmp_m, p, K, U;
+        version = RS_list_decorate([ "2.9", "glowscript" ]);
+        Array.prototype['+']=function(r) {return this.concat(r)}
+        Array.prototype['*']=function(r) {return __array_times_number(this, r)}
+        window.__GSlang = "vpython";
+        box = vp_box;
+        sphere = vp_sphere;
+        simple_sphere = vp_simple_sphere;
+        cylinder = vp_cylinder;
+        pyramid = vp_pyramid;
+        cone = vp_cone;
+        helix = vp_helix;
+        ellipsoid = vp_ellipsoid;
+        ring = vp_ring;
+        arrow = vp_arrow;
+        compound = vp_compound;
+        display = canvas;
+        vector = vec;
+        print = GSprint;
+        arange = range;
+        type = pytype;
+        scene = canvas();
+        var strings = RS_modules.pythonize.strings;
+    
+        strings();
+        "16";
+        RS_unpack = [3, 1, 9.8, 45, 0];
+        M = RS_unpack[0];
+        m = RS_unpack[1];
+        g = RS_unpack[2];
+        theta = RS_unpack[3];
+        k = RS_unpack[4];
+        "26";
+        async function acc(theta, k, M, m) {
+            var RS_ls, RS_unpack, a_m, a_M, m_a_x, m_a_y, M_a_x;
+            "28";
+            theta = radians(theta);
+            "30";
+            if (k[">="](tan(theta))) {
+                "32";
+                RS_unpack = [0, 0, 0, 0, 0];
+                a_m = RS_unpack[0];
+                a_M = RS_unpack[1];
+                m_a_x = RS_unpack[2];
+                m_a_y = RS_unpack[3];
+                M_a_x = RS_unpack[4];
+                "34";
+            } else {
+                "36";
+                a_m = g["/"](M["*"](GS_power(cos(theta), 2)["+"](k["*"](sin(theta))["*"](cos(theta))))["/"](m["+"](M))["/"](sin(theta)["-"](k["*"](cos(theta))))["+"](sin(theta)));
+                "38";
+                a_M = m["*"](cos(theta))["/"](m["+"](M))["*"](a_m);
+                "42";
+                m_a_x = a_m["*"](cos(theta))["-"](a_M);
+                "44";
+                m_a_y = a_m["-u"]()["*"](sin(theta));
+                "46";
+                M_a_x = a_M["-u"]();
+            }
+            "48";
+            return [m_a_x, m_a_y, M_a_x];
+        };
+        if (!acc.__argnames__) Object.defineProperties(acc, {
+            __argnames__ : {value: ["theta", "k", "M", "m"]}
+        });
+    
+        "52";
+        RS_unpack = (await acc(theta, k, M, m));
+    RS_unpack = RS_unpack_asarray(3, RS_unpack);
+        m_a_x = RS_unpack[0];
+        m_a_y = RS_unpack[1];
+        M_a_x = RS_unpack[2];
+        "58";
+        async function set_scene() {
+            "60";
+            "62";
+            scene = RS_interpolate_kwargs.call(this, canvas, [RS_desugar_kwargs({width: 1e3, height: 300, align: "left"})]);
+            "64";
+            scene.camera.pos = vec(30, 10, 40);
+            "66";
+            scene.camera.axis = vec(5["-u"](), 10["-u"](), 30["-u"]());
+        };
+    
+        "68";
+        ;(await set_scene());
+        "72";
+        running = false;
+        "74";
+        async function Run(r) {
+            "76";
+            "78";
+            running = !running;
+            "80";
+            if (running) {
+                "82";
+                r.text = "Pause";
+                "84";
+            } else {
+                "86";
+                r.text = "Run";
+            }
+        };
+        if (!Run.__argnames__) Object.defineProperties(Run, {
+            __argnames__ : {value: ["r"]}
+        });
+    
+        "90";
+        async function restart() {
+            var RS_ls, RS_unpack, theta_tmp, friction_tmp, M_tmp, m_tmp, apex, m_a_x, m_a_y, M_a_x, i;
+            "92";
+            RS_unpack = [s1.number, s2.number, s0.number, s3.number];
+            theta_tmp = RS_unpack[0];
+            friction_tmp = RS_unpack[1];
+            M_tmp = RS_unpack[2];
+            m_tmp = RS_unpack[3];
+            "93";
+            if ((theta_tmp === null || typeof theta_tmp === "object" && RS_equals(theta_tmp, null))) {
+                theta_tmp = theta;
+            }
+            "94";
+            if ((friction_tmp === null || typeof friction_tmp === "object" && RS_equals(friction_tmp, null))) {
+                friction_tmp = k;
+            }
+            "95";
+            if ((M_tmp === null || typeof M_tmp === "object" && RS_equals(M_tmp, null))) {
+                M_tmp = M;
+            }
+            "96";
+            if ((m_tmp === null || typeof m_tmp === "object" && RS_equals(m_tmp, null))) {
+                m_tmp = m;
+            }
+            "98";
+            "100";
+            "102";
+            running = false;
+            "104";
+            b1.text = "Run";
+            "106";
+            t = 0;
+            "108";
+            m_v.remove();
+            "110";
+            M_v.remove();
+            "116";
+            total_E.remove();
+            "118";
+            m_E.remove();
+            "120";
+            M_E.remove();
+            "122";
+            RS_unpack = [vec(0, 0, 0), vec(10["/"](tan(radians(theta_tmp))), 0, 0), vec(10["/"](tan(radians(theta_tmp))), 0, 10), 
+            vec(0, 0, 10), vec(0, 10, 10), vec(0, 10, 0)];
+            A.pos = RS_unpack[0];
+            B.pos = RS_unpack[1];
+            C.pos = RS_unpack[2];
+            D.pos = RS_unpack[3];
+            E.pos = RS_unpack[4];
+            F.pos = RS_unpack[5];
+            "124";
+            RS_unpack = [vec(0, 0, 0), vec(0, 0, 0), vec(0, 0, 0), vec(0, 0, 0), vec(0, 0, 0), 
+            vec(0, 0, 0)];
+            A.v = RS_unpack[0];
+            B.v = RS_unpack[1];
+            C.v = RS_unpack[2];
+            D.v = RS_unpack[3];
+            E.v = RS_unpack[4];
+            F.v = RS_unpack[5];
+            "126";
+            apex = RS_list_decorate([ A, B, C, D, E, F ]);
+            "129";
+            RS_unpack = (await acc(theta_tmp, friction_tmp, M_tmp, m_tmp));
+    RS_unpack = RS_unpack_asarray(3, RS_unpack);
+            m_a_x = RS_unpack[0];
+            m_a_y = RS_unpack[1];
+            M_a_x = RS_unpack[2];
+            "132";
+            for (var RS_Index1 = 0; RS_Index1["<"](6); RS_Index1++) {
+                i = RS_Index1;
+                "134";
+                RS_unpack = [0, M_a_x];
+                apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].v.x = RS_unpack[0];
+                apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].a.x = RS_unpack[1];
+            }
+            "138";
+            RS_unpack = [vec(0, 0, 0), vec(1.5["/"](sin(radians(theta_tmp))), 10, 5), m_a_x, m_a_y];
+            ball.v = RS_unpack[0];
+            ball.pos = RS_unpack[1];
+            ball.a.x = RS_unpack[2];
+            ball.a.y = RS_unpack[3];
+        };
+    
+        "142";
+        async function set_theta() {
+            var RS_ls, RS_unpack, theta_tmp, friction_tmp, M_tmp, m_tmp, m_a_x, m_a_y, M_a_x, i;
+            "144";
+            RS_unpack = [s1.number, s2.number, s0.number, s3.number];
+            theta_tmp = RS_unpack[0];
+            friction_tmp = RS_unpack[1];
+            M_tmp = RS_unpack[2];
+            m_tmp = RS_unpack[3];
+            "145";
+            if ((theta_tmp === null || typeof theta_tmp === "object" && RS_equals(theta_tmp, null))) {
+                theta_tmp = theta;
+            }
+            "146";
+            if ((friction_tmp === null || typeof friction_tmp === "object" && RS_equals(friction_tmp, null))) {
+                friction_tmp = k;
+            }
+            "147";
+            if ((M_tmp === null || typeof M_tmp === "object" && RS_equals(M_tmp, null))) {
+                M_tmp = M;
+            }
+            "148";
+            if ((m_tmp === null || typeof m_tmp === "object" && RS_equals(m_tmp, null))) {
+                m_tmp = m;
+            }
+            "150";
+            RS_unpack = (await acc(theta_tmp, friction_tmp, M_tmp, m_tmp));
+    RS_unpack = RS_unpack_asarray(3, RS_unpack);
+            m_a_x = RS_unpack[0];
+            m_a_y = RS_unpack[1];
+            M_a_x = RS_unpack[2];
+            "152";
+            for (var RS_Index2 = 1; RS_Index2["<"](3); RS_Index2++) {
+                i = RS_Index2;
+                "154";
+                apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].pos.x = 10["/"](tan(radians(theta_tmp)));
+            }
+            "156";
+            for (var RS_Index3 = 0; RS_Index3["<"](6); RS_Index3++) {
+                i = RS_Index3;
+                "158";
+                apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].a.x = M_a_x;
+            }
+            "160";
+            ball.pos.x = 1.5["/"](sin(radians(theta_tmp)));
+            "162";
+            RS_unpack = [m_a_x, m_a_y];
+            ball.a.x = RS_unpack[0];
+            ball.a.y = RS_unpack[1];
+        };
+    
+        "166";
+        async function set_friction() {
+            var RS_ls, RS_unpack, theta_tmp, friction_tmp, M_tmp, m_tmp, m_a_x, m_a_y, M_a_x, i;
+            "168";
+            RS_unpack = [s1.number, s2.number, s0.number, s3.number];
+            theta_tmp = RS_unpack[0];
+            friction_tmp = RS_unpack[1];
+            M_tmp = RS_unpack[2];
+            m_tmp = RS_unpack[3];
+            "169";
+            if ((theta_tmp === null || typeof theta_tmp === "object" && RS_equals(theta_tmp, null))) {
+                theta_tmp = theta;
+            }
+            "170";
+            if ((friction_tmp === null || typeof friction_tmp === "object" && RS_equals(friction_tmp, null))) {
+                friction_tmp = k;
+            }
+            "171";
+            if ((M_tmp === null || typeof M_tmp === "object" && RS_equals(M_tmp, null))) {
+                M_tmp = M;
+            }
+            "172";
+            if ((m_tmp === null || typeof m_tmp === "object" && RS_equals(m_tmp, null))) {
+                m_tmp = m;
+            }
+            "174";
+            RS_unpack = (await acc(theta_tmp, friction_tmp, M_tmp, m_tmp));
+    RS_unpack = RS_unpack_asarray(3, RS_unpack);
+            m_a_x = RS_unpack[0];
+            m_a_y = RS_unpack[1];
+            M_a_x = RS_unpack[2];
+            "176";
+            for (var RS_Index4 = 0; RS_Index4["<"](6); RS_Index4++) {
+                i = RS_Index4;
+                "178";
+                apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].a.x = M_a_x;
+            }
+            "180";
+            RS_unpack = [m_a_x, m_a_y];
+            ball.a.x = RS_unpack[0];
+            ball.a.y = RS_unpack[1];
+        };
+    
+        "184";
+        async function set_mass() {
+            var RS_ls, RS_unpack, theta_tmp, friction_tmp, M_tmp, m_tmp, m_a_x, m_a_y, M_a_x, i;
+            "186";
+            RS_unpack = [s1.number, s2.number, s0.number, s3.number];
+            theta_tmp = RS_unpack[0];
+            friction_tmp = RS_unpack[1];
+            M_tmp = RS_unpack[2];
+            m_tmp = RS_unpack[3];
+            "187";
+            if ((theta_tmp === null || typeof theta_tmp === "object" && RS_equals(theta_tmp, null))) {
+                theta_tmp = theta;
+            }
+            "188";
+            if ((friction_tmp === null || typeof friction_tmp === "object" && RS_equals(friction_tmp, null))) {
+                friction_tmp = k;
+            }
+            "189";
+            if ((M_tmp === null || typeof M_tmp === "object" && RS_equals(M_tmp, null))) {
+                M_tmp = M;
+            }
+            "190";
+            if ((m_tmp === null || typeof m_tmp === "object" && RS_equals(m_tmp, null))) {
+                m_tmp = m;
+            }
+            "192";
+            RS_unpack = (await acc(theta_tmp, friction_tmp, M_tmp, m_tmp));
+    RS_unpack = RS_unpack_asarray(3, RS_unpack);
+            m_a_x = RS_unpack[0];
+            m_a_y = RS_unpack[1];
+            M_a_x = RS_unpack[2];
+            "194";
+            for (var RS_Index5 = 0; RS_Index5["<"](6); RS_Index5++) {
+                i = RS_Index5;
+                "196";
+                apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].a.x = M_a_x;
+            }
+            "198";
+            RS_unpack = [m_a_x, m_a_y];
+            ball.a.x = RS_unpack[0];
+            ball.a.y = RS_unpack[1];
+        };
+    
+        "207";
+        scene.append_to_caption("      ");
+        "209";
+        b1 = RS_interpolate_kwargs.call(this, button, [RS_desugar_kwargs({text: "Run", bind: Run, background: color.cyan})]);
+        "213";
+        scene.append_to_caption("      ");
+        "215";
+        b2 = RS_interpolate_kwargs.call(this, button, [RS_desugar_kwargs({text: "Restart", bind: restart, background: color.cyan})]);
+        "219";
+        scene.append_to_caption("\n\nM =     ");
+        ;(await sleep(.2));
+        "221";
+        s0 = RS_interpolate_kwargs.call(this, winput, [RS_desugar_kwargs({bind: set_mass, type: "numeric"})]);
+        "225";
+        scene.append_to_caption("\n\nm =     ");
+        ;(await sleep(.2));
+        "227";
+        s3 = RS_interpolate_kwargs.call(this, winput, [RS_desugar_kwargs({bind: set_mass, type: "numeric"})]);
+        "231";
+        scene.append_to_caption("\n\nAngle of wedge:");
+        ;(await sleep(.2));
+        "233";
+        s1 = RS_interpolate_kwargs.call(this, winput, [RS_desugar_kwargs({bind: set_theta, type: "numeric"})]);
+        "235";
+        scene.append_to_caption(" Degree\n");
+        "239";
+        scene.append_to_caption("\n\nCoefficient of friction on the slope: ");
+        ;(await sleep(.2));
+        "241";
+        s2 = RS_interpolate_kwargs.call(this, winput, [RS_desugar_kwargs({bind: set_friction, type: "numeric"})]);
+        "243";
+        scene.append_to_caption("<i>\n\n(Please press enter after setting each parameter, otherwise \n it will run on default parameter)<\/i>");
+        "245";
+        scene.append_to_caption("\n\n\n\n\n");
+        "260";
+        async function set_wedge() {
+            var RS_ls, A, B, C, D, E, F, apex, T1, T2, Q1, Q2, Q3;
+            "262";
+            A = RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: vec(0, 0, 0), color: color.orange, v: vec(0, 0, 0), a: vec(M_a_x, 0, 0)})]);
+            "264";
+            B = RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: vec(10["/"](tan(radians(theta))), 0, 0), color: color.purple, v: vec(0, 0, 0), a: vec(M_a_x, 0, 0)})]);
+            "266";
+            C = RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: vec(10["/"](tan(radians(theta))), 0, 10), color: color.green, v: vec(0, 0, 0), a: vec(M_a_x, 0, 0)})]);
+            "268";
+            D = RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: vec(0, 0, 10), color: color.blue, v: vec(0, 0, 0), a: vec(M_a_x, 0, 0)})]);
+            "270";
+            E = RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: vec(0, 10, 10), color: color.cyan, v: vec(0, 0, 0), a: vec(M_a_x, 0, 0)})]);
+            "272";
+            F = RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: vec(0, 10, 0), color: color.red, v: vec(0, 0, 0), a: vec(M_a_x, 0, 0)})]);
+            "274";
+            apex = RS_list_decorate([ A, B, C, D, E, F ]);
+            "278";
+            T1 = RS_interpolate_kwargs.call(this, triangle, [RS_desugar_kwargs({v0: E, v1: D, v2: C})]);
+            "280";
+            T2 = RS_interpolate_kwargs.call(this, triangle, [RS_desugar_kwargs({v0: F, v1: A, v2: B})]);
+            "282";
+            Q1 = RS_interpolate_kwargs.call(this, quad, [RS_desugar_kwargs({v0: F, v1: E, v2: D, v3: A})]);
+            "284";
+            Q2 = RS_interpolate_kwargs.call(this, quad, [RS_desugar_kwargs({v0: F, v1: E, v2: C, v3: B})]);
+            "286";
+            Q3 = RS_interpolate_kwargs.call(this, quad, [RS_desugar_kwargs({v0: A, v1: B, v2: C, v3: D})]);
+            "288";
+            return [A, B, C, D, E, F];
+        };
+    
+        "290";
+        RS_unpack = (await set_wedge());
+    RS_unpack = RS_unpack_asarray(6, RS_unpack);
+        A = RS_unpack[0];
+        B = RS_unpack[1];
+        C = RS_unpack[2];
+        D = RS_unpack[3];
+        E = RS_unpack[4];
+        F = RS_unpack[5];
+        "292";
+        apex = RS_list_decorate([ A, B, C, D, E, F ]);
+        "302";
+        floor = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vec(0, 0, 0), size: vec(300, 1, 30), color: color.blue, v: vec(0, 0, 0), a: vec(0, 0, 0)})]);
+        "312";
+        ball = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vec(1.5["/"](sin(radians(theta))), 10, 5), radius: 1.5, v: vec(0, 0, 0), a: vec(m_a_x, m_a_y, 0), texture: textures.wood})]);
+        "324";
+        g1 = RS_interpolate_kwargs.call(this, graph, [RS_desugar_kwargs({title: "<b>Velocity (x direction)</b>", xtitle: "<b>time</b>", ytitle: "<b>P</b>", align: "left", width: 500, height: 300})]);
+        "330";
+        g2 = RS_interpolate_kwargs.call(this, graph, [RS_desugar_kwargs({title: "<b>Energy<b>", xtitle: "<b>time</b>", ytitle: "<b>E</b>", align: "left", width: 500, height: 300})]);
+        "339";
+        m_v = RS_interpolate_kwargs.call(this, gdots, [RS_desugar_kwargs({graph: g1, color: color.red})]);
+        "341";
+        M_v = RS_interpolate_kwargs.call(this, gdots, [RS_desugar_kwargs({graph: g1, color: color.green})]);
+        "349";
+        m_E = RS_interpolate_kwargs.call(this, gdots, [RS_desugar_kwargs({graph: g2, color: color.blue})]);
+        "351";
+        M_E = RS_interpolate_kwargs.call(this, gdots, [RS_desugar_kwargs({graph: g2, color: color.red})]);
+        "353";
+        total_E = RS_interpolate_kwargs.call(this, gdots, [RS_desugar_kwargs({graph: g2, color: color.green})]);
+        "361";
+        dt = .01;
+        "363";
+        t = 0;
+        "367";
+        while (true) {
+            "369";
+            ;(await rate(1["/"](dt)));
+            "371";
+            if (ball.pos.x[">"](50)) {
+                "373";
+                running = false;
+                "375";
+            }
+            if (running) {
+                "383";
+                ball.v.x=ball.v.x["+"](ball.a.x["*"](dt));
+                "385";
+                ball.pos.x=ball.pos.x["+"](ball.v.x["*"](dt));
+                "387";
+                ball.v.y=ball.v.y["+"](ball.a.y["*"](dt));
+                "389";
+                ball.pos.y=ball.pos.y["+"](ball.v.y["*"](dt));
+                "397";
+                for (var RS_Index6 = 0; RS_Index6["<"](6); RS_Index6++) {
+                    i = RS_Index6;
+                    "399";
+                    apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].v.x=apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].v.x["+"](apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].a.x["*"](dt));
+                    "401";
+                    apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].pos.x=apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].pos.x["+"](apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].v.x["*"](dt));
+                    "409";
+                }
+                if (ball.pos.y["<="](ball.radius["+"](floor.size.y["/"](2)))) {
+                    "415";
+                    ball.v.x = GS_power((GS_power(ball.v.x, 2)["+"](GS_power(ball.v.y, 2))), .5);
+                    "417";
+                    RS_unpack = [0, 0, 0];
+                    ball.a.x = RS_unpack[0];
+                    ball.a.y = RS_unpack[1];
+                    ball.v.y = RS_unpack[2];
+                    "419";
+                    ball.up = vec(0, 1, 0);
+                    "421";
+                    ball.pos.x=ball.pos.x["+"](ball.v.x["*"](dt));
+                    "427";
+                    for (var RS_Index7 = 0; RS_Index7["<"](6); RS_Index7++) {
+                        i = RS_Index7;
+                        "429";
+                        apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].a.x = 0;
+                        "431";
+                        apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].pos.x=apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].pos.x["+"](apex[(typeof i === "number" && i["<"](0)) ? apex.length["+"](i) : i].v.x["*"](dt));
+                        "437";
+                    }
+                }
+                if ((s0.number === null || typeof s0.number === "object" && RS_equals(s0.number, null))) {
+                    tmp_M = M;
+                } else {
+                    tmp_M = s0.number;
+                }
+                "439";
+                if ((s3.number === null || typeof s3.number === "object" && RS_equals(s3.number, null))) {
+                    tmp_m = m;
+                } else {
+                    tmp_m = s3.number;
+                }
+                "442";
+                if (ball.pos.y[">="](ball.radius["+"](floor.size.y["/"](2)))) {
+                    "444";
+                    p = ball.v.x["*"](tmp_m)["+"](A.v.x["*"](tmp_M));
+                    "446";
+                    RS_interpolate_kwargs.call(m_v, m_v.plot, [RS_desugar_kwargs({pos: [t, ball.v.x]})]);
+                    "448";
+                    RS_interpolate_kwargs.call(M_v, M_v.plot, [RS_desugar_kwargs({pos: [t, A.v.x]})]);
+                }
+                "456";
+                K = .5["*"](tmp_m)["*"](GS_power(ball.v.x, 2)["+"](GS_power(ball.v.y, 2)))["+"](.5["*"](tmp_M)["*"](GS_power(A.v.x, 2)));
+                "458";
+                U = tmp_m["*"](g)["*"](ball.pos.y["-"](ball.radius["+"](floor.size.y["/"](2))));
+                "462";
+                RS_interpolate_kwargs.call(m_E, m_E.plot, [RS_desugar_kwargs({pos: [t, K]})]);
+                "464";
+                RS_interpolate_kwargs.call(M_E, M_E.plot, [RS_desugar_kwargs({pos: [t, U]})]);
+                "468";
+                RS_interpolate_kwargs.call(total_E, total_E.plot, [RS_desugar_kwargs({pos: [t, K["+"](U)]})]);
+                "472";
+                t=t["+"](dt);
+            }
+        }
+    };
+    
+    ;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+    // END JAVASCRIPT
+    
+    //--><!]]></script>
+    </div>
