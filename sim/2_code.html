@@ -1,0 +1,126 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000"># Morris H. 12/10</span>
+
+<span style="color: #0000ff">from</span> vpython <span style="color: #0000ff">import</span> *
+
+<span style="color: #008000"># intial setting</span>
+
+sun_mass, sun_r= 1988500E24, 695700*10**3
+earth_mass, earth_r, earth_v = 5.9724*10**24, 6371*10**3, 29780
+moon_mass, moon_r, moon_v = 0.07346*10**24, 1737*10**3, 1.023*10**3
+sun_earth_r, earth_moon_r = 152.10*10**9 , 384400*10**3
+G = 6.67408E-11
+T = 2360488
+
+
+scene = canvas(title=<span style="color: #a31515">&#39;&lt;font size=30&gt;&lt;center&gt;&lt;i&gt;Motion of Moon\n&lt;/i&gt;&lt;/center&gt;&lt;/font&gt;&#39;</span>, 
+                   width=1000, height=600, align=<span style="color: #a31515">&#39;left&#39;</span>, range=200)
+
+
+scene.range = sun_earth_r + earth_moon_r*50
+
+earth = sphere(pos=vec(sun_earth_r, 0, 0), texture=textures.earth, up=vec(-tan(23.5/180*pi), 0, 1), 
+               radius=earth_r, make_trail=True, v=vec(0, earth_v, 0), a=vec(0, 0, 0))
+
+sun = sphere(pos=vec(0,0,0), radius=sun_r*50, color=color.orange, emissive=True, v=vec(0, 0, 0), 
+             a=vec(0, 0, 0))
+
+<span style="color: #008000"># moon = sphere(pos=vec(earth_moon_r+sun_earth_r, 0, 0), radius=moon_r*20, make_trail=False, </span>
+<span style="color: #008000">#               v=vec(0, moon_v+earth_v, 0), a=vec(0, 0, 0))</span>
+
+moon = sphere(pos=vec(sun_earth_r+earth_moon_r*10, 0, 0), radius=moon_r*2500, make_trail=True, 
+              color=vec(0.95, 0.94, 0.78))
+
+
+g1 = graph(title=<span style="color: #a31515">&#39;Moon Position&#39;</span>, align=<span style="color: #a31515">&#39;right&#39;</span>, xtitle=<span style="color: #a31515">&#39;&lt;b&gt;X(km)&lt;/b&gt;&#39;</span>, ytitle=<span style="color: #a31515">&#39;&lt;b&gt;Y(km)&lt;/b&gt;&#39;</span>, 
+           width=500, height=350)
+
+scene.append_to_caption(<span style="color: #a31515">&#39;\n\n&lt;i&gt;Make sun 50 times bigger and moon 2500 times bigger&lt;/i&gt;\n\n\n\n\n\n\n&#39;</span>)
+
+moon_p = gdots(graph=g1, color=color.black)
+earth_p = gdots(graph=g1, color=color.blue)
+
+
+
+
+
+t, dt, i = 0, 60*60, 0
+<span style="color: #0000ff">while</span> True:
+    rate(150)
+    earth.rotate(angle=1, axis=vec(-tan(23.5/180*pi), 0, 1))
+
+    earth.a = G*sun_mass*(sun.pos-earth.pos)/mag(sun.pos-earth.pos)**3 
+    earth.v += earth.a*dt
+    earth.pos += earth.v*dt
+
+    moon.pos = vec(earth_moon_r*cos(dt*i*2*pi/T)*10, earth_moon_r*sin(dt*i*2*pi/T)*10, 0) + earth.pos
+    i += 1
+
+    moon_p.plot(pos=(moon.pos.x/1000, moon.pos.y/1000))
+    earth_p.plot(pos=(earth.pos.x/1000, earth.pos.y/1000))
+
+    t += dt
+
+    
+</pre></td></tr></table></div>

@@ -1,0 +1,939 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">  1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
+   52
+   53
+   54
+   55
+   56
+   57
+   58
+   59
+   60
+   61
+   62
+   63
+   64
+   65
+   66
+   67
+   68
+   69
+   70
+   71
+   72
+   73
+   74
+   75
+   76
+   77
+   78
+   79
+   80
+   81
+   82
+   83
+   84
+   85
+   86
+   87
+   88
+   89
+   90
+   91
+   92
+   93
+   94
+   95
+   96
+   97
+   98
+   99
+  100
+  101
+  102
+  103
+  104
+  105
+  106
+  107
+  108
+  109
+  110
+  111
+  112
+  113
+  114
+  115
+  116
+  117
+  118
+  119
+  120
+  121
+  122
+  123
+  124
+  125
+  126
+  127
+  128
+  129
+  130
+  131
+  132
+  133
+  134
+  135
+  136
+  137
+  138
+  139
+  140
+  141
+  142
+  143
+  144
+  145
+  146
+  147
+  148
+  149
+  150
+  151
+  152
+  153
+  154
+  155
+  156
+  157
+  158
+  159
+  160
+  161
+  162
+  163
+  164
+  165
+  166
+  167
+  168
+  169
+  170
+  171
+  172
+  173
+  174
+  175
+  176
+  177
+  178
+  179
+  180
+  181
+  182
+  183
+  184
+  185
+  186
+  187
+  188
+  189
+  190
+  191
+  192
+  193
+  194
+  195
+  196
+  197
+  198
+  199
+  200
+  201
+  202
+  203
+  204
+  205
+  206
+  207
+  208
+  209
+  210
+  211
+  212
+  213
+  214
+  215
+  216
+  217
+  218
+  219
+  220
+  221
+  222
+  223
+  224
+  225
+  226
+  227
+  228
+  229
+  230
+  231
+  232
+  233
+  234
+  235
+  236
+  237
+  238
+  239
+  240
+  241
+  242
+  243
+  244
+  245
+  246
+  247
+  248
+  249
+  250
+  251
+  252
+  253
+  254
+  255
+  256
+  257
+  258
+  259
+  260
+  261
+  262
+  263
+  264
+  265
+  266
+  267
+  268
+  269
+  270
+  271
+  272
+  273
+  274
+  275
+  276
+  277
+  278
+  279
+  280
+  281
+  282
+  283
+  284
+  285
+  286
+  287
+  288
+  289
+  290
+  291
+  292
+  293
+  294
+  295
+  296
+  297
+  298
+  299
+  300
+  301
+  302
+  303
+  304
+  305
+  306
+  307
+  308
+  309
+  310
+  311
+  312
+  313
+  314
+  315
+  316
+  317
+  318
+  319
+  320
+  321
+  322
+  323
+  324
+  325
+  326
+  327
+  328
+  329
+  330
+  331
+  332
+  333
+  334
+  335
+  336
+  337
+  338
+  339
+  340
+  341
+  342
+  343
+  344
+  345
+  346
+  347
+  348
+  349
+  350
+  351
+  352
+  353
+  354
+  355
+  356
+  357
+  358
+  359
+  360
+  361
+  362
+  363
+  364
+  365
+  366
+  367
+  368
+  369
+  370
+  371
+  372
+  373
+  374
+  375
+  376
+  377
+  378
+  379
+  380
+  381
+  382
+  383
+  384
+  385
+  386
+  387
+  388
+  389
+  390
+  391
+  392
+  393
+  394
+  395
+  396
+  397
+  398
+  399
+  400
+  401
+  402
+  403
+  404
+  405
+  406
+  407
+  408
+  409
+  410
+  411
+  412
+  413
+  414
+  415
+  416
+  417
+  418
+  419
+  420
+  421
+  422
+  423
+  424
+  425
+  426
+  427
+  428
+  429
+  430
+  431
+  432
+  433
+  434
+  435
+  436
+  437
+  438
+  439
+  440
+  441
+  442
+  443
+  444
+  445
+  446
+  447
+  448
+  449
+  450
+  451
+  452
+  453
+  454
+  455
+  456
+  457
+  458
+  459
+  460
+  461
+  462
+  463
+  464
+  465
+  466
+  467
+  468
+  469</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000"># Morris H. 12/6</span>
+  
+  
+  
+  <span style="color: #0000ff">from</span> vpython <span style="color: #0000ff">import</span> *
+  
+  
+  
+  <span style="color: #008000"># 初始值設定</span>
+  
+  
+  
+  M, m, g, theta, k = 3.0, 1.0, 9.8, 45, 0.0
+  
+  
+  
+  
+  
+  <span style="color: #008000"># 物體運動公式，當摩擦係數大於tan斜坡角度時，物體不會運動</span>
+  
+  
+  
+  <span style="color: #0000ff">def</span> acc(theta, k, M, m):
+  
+      theta = radians(theta)
+  
+      <span style="color: #0000ff">if</span> k &gt;= tan(theta):
+  
+          a_m, a_M, m_a_x, m_a_y, M_a_x = 0.0, 0.0, 0.0, 0.0, 0.0
+  
+      <span style="color: #0000ff">else</span>:
+  
+          a_m = g/(M*(cos(theta)**2 + k*sin(theta)*cos(theta))/(m + M)/(sin(theta) - k*cos(theta))+ sin(theta))
+  
+          a_M = m*cos(theta)/(m+M)*a_m
+  
+  
+  
+          m_a_x = a_m*cos(theta)-a_M
+  
+          m_a_y = -a_m*sin(theta)
+  
+          M_a_x = -a_M
+  
+      <span style="color: #0000ff">return</span> m_a_x, m_a_y, M_a_x
+  
+      
+  
+  m_a_x, m_a_y, M_a_x = acc(theta, k, M, m)
+  
+  
+  
+  <span style="color: #008000"># 場景設定</span>
+  
+  <span style="color: #0000ff">def</span> set_scene():
+  
+      <span style="color: #0000ff">global</span> scene
+  
+      scene = canvas(width=1000, height=300, align=<span style="color: #a31515">&#39;left&#39;</span>)
+  
+      scene.camera.pos = vec(30, 10, 40)
+  
+      scene.camera.axis = vec(-5, -10, -30)
+  
+  set_scene()
+  
+  
+  
+  running = False
+  
+  <span style="color: #0000ff">def</span> Run(r):
+  
+      <span style="color: #0000ff">global</span> running
+  
+      running = <span style="color: #0000ff">not</span> running
+  
+      <span style="color: #0000ff">if</span> running: 
+  
+          r.text = <span style="color: #a31515">&quot;Pause&quot;</span>
+  
+      <span style="color: #0000ff">else</span>: 
+  
+          r.text = <span style="color: #a31515">&quot;Run&quot;</span>
+  
+  
+  
+  <span style="color: #0000ff">def</span> restart():
+  
+      theta_tmp, friction_tmp, M_tmp, m_tmp = s1.number, s2.number, s0.number, s3.number
+      <span style="color: #0000ff">if</span> theta_tmp == None: theta_tmp = theta
+      <span style="color: #0000ff">if</span> friction_tmp == None: friction_tmp = k
+      <span style="color: #0000ff">if</span> M_tmp == None: M_tmp = M
+      <span style="color: #0000ff">if</span> m_tmp == None: m_tmp = m
+  
+      <span style="color: #0000ff">global</span> running
+  
+      <span style="color: #0000ff">global</span> t 
+  
+      running = False
+  
+      b1.text = <span style="color: #a31515">&quot;Run&quot;</span>
+  
+      t = 0
+  
+      m_v.delete()
+  
+      M_v.delete()
+  
+      <span style="color: #008000"># m_p.delete()</span>
+  
+      <span style="color: #008000"># M_p.delete()</span>
+  
+      total_E.delete()
+  
+      m_E.delete()
+  
+      M_E.delete()
+  
+      A.pos, B.pos, C.pos, D.pos, E.pos, F.pos = vec(0, 0, 0), vec(10/tan(radians(theta_tmp)), 0, 0), vec(10/tan(radians(theta_tmp)), 0, 10), vec(0, 0, 10), vec(0, 10, 10), vec(0, 10, 0)
+  
+      A.v, B.v, C.v, D.v, E.v, F.v = vec(0,0,0), vec(0,0,0), vec(0,0,0), vec(0,0,0), vec(0,0,0), vec(0,0,0)
+  
+      apex = [A, B, C, D, E, F]
+  
+  
+      m_a_x, m_a_y, M_a_x = acc(theta_tmp, friction_tmp, M_tmp, m_tmp)
+  
+  
+      <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0,6):
+  
+          apex[i].v.x, apex[i].a.x = 0, M_a_x
+  
+      
+  
+      ball.v, ball.pos, ball.a.x, ball.a.y = vec(0,0,0), vec(1.5/sin(radians(theta_tmp)), 10, 5), m_a_x, m_a_y
+  
+  
+  
+  <span style="color: #0000ff">def</span> set_theta():
+  
+      theta_tmp, friction_tmp, M_tmp, m_tmp = s1.number, s2.number, s0.number, s3.number
+      <span style="color: #0000ff">if</span> theta_tmp == None: theta_tmp = theta
+      <span style="color: #0000ff">if</span> friction_tmp == None: friction_tmp = k
+      <span style="color: #0000ff">if</span> M_tmp == None: M_tmp = M
+      <span style="color: #0000ff">if</span> m_tmp == None: m_tmp = m
+      <span style="color: #0000ff">if</span> theta_tmp &gt; 80 <span style="color: #0000ff">or</span> theta_tmp &lt; 10: theta_tmp = theta
+      m_a_x, m_a_y, M_a_x = acc(theta_tmp, friction_tmp, M_tmp, m_tmp)
+  
+      <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(1,3):
+  
+          apex[i].pos.x = 10/tan(radians(theta_tmp))
+  
+      <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0,6):
+  
+          apex[i].a.x = M_a_x
+  
+      ball.pos.x = 1.5/sin(radians(theta_tmp))
+  
+      ball.a.x, ball.a.y = m_a_x, m_a_y
+  
+      
+  
+  <span style="color: #0000ff">def</span> set_friction():
+  
+      theta_tmp, friction_tmp, M_tmp, m_tmp = s1.number, s2.number, s0.number, s3.number
+      <span style="color: #0000ff">if</span> theta_tmp == None: theta_tmp = theta
+      <span style="color: #0000ff">if</span> friction_tmp == None: friction_tmp = k
+      <span style="color: #0000ff">if</span> M_tmp == None: M_tmp = M
+      <span style="color: #0000ff">if</span> m_tmp == None: m_tmp = m
+  
+      m_a_x, m_a_y, M_a_x = acc(theta_tmp, friction_tmp, M_tmp, m_tmp)
+  
+      <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0,6):
+  
+          apex[i].a.x = M_a_x
+  
+      ball.a.x, ball.a.y = m_a_x, m_a_y
+  
+  
+  
+  <span style="color: #0000ff">def</span> set_mass():
+  
+      theta_tmp, friction_tmp, M_tmp, m_tmp = s1.number, s2.number, s0.number, s3.number
+      <span style="color: #0000ff">if</span> theta_tmp == None: theta_tmp = theta
+      <span style="color: #0000ff">if</span> friction_tmp == None: friction_tmp = k
+      <span style="color: #0000ff">if</span> M_tmp == None: M_tmp = M
+      <span style="color: #0000ff">if</span> m_tmp == None: m_tmp = m
+  
+      m_a_x, m_a_y, M_a_x = acc(theta_tmp, friction_tmp, M_tmp, m_tmp)
+  
+      <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0,6):
+  
+          apex[i].a.x = M_a_x
+  
+      ball.a.x, ball.a.y = m_a_x, m_a_y
+  
+  
+  
+  
+  
+  <span style="color: #008000"># 開使按鈕、角度設定、摩擦力設定</span>
+  
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;      &#39;</span>)
+  
+  b1 = button(text=<span style="color: #a31515">&quot;Run&quot;</span>, bind=Run, background=color.cyan)
+  
+  
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;      &#39;</span>)
+  
+  b2 = button(text=<span style="color: #a31515">&quot;Restart&quot;</span>, bind=restart, background=color.cyan)
+  
+  <span style="color: #008000"># 設定M</span>
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;\n\nM =     &#39;</span>)
+  
+  s0 = winput(bind=set_mass, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+  
+  <span style="color: #008000"># 設定m</span>
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;\n\nm =     &#39;</span>)
+  
+  s3 = winput(bind=set_mass, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+  
+  <span style="color: #008000"># 設定角度</span>
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;\n\nAngle of wedge(10~80):&#39;</span>)
+  
+  s1 = winput(bind=set_theta, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39; Degree\n&#39;</span>)
+  
+  <span style="color: #008000"># 設定摩擦力</span>
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;\n\nCoefficient of friction on the slope: &#39;</span>)      
+  
+  s2 = winput(bind=set_friction, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;&lt;i&gt;\n\n(Please press enter after setting each parameter, otherwise \n it will run on default parameter)&lt;/i&gt;&#39;</span>)
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;\n\n\n\n\n&#39;</span>)
+  
+  
+  
+  
+  <span style="color: #008000"># k = s2.value</span>
+  
+  
+  
+  
+  
+  <span style="color: #008000"># 大木塊</span>
+  
+  
+  
+  <span style="color: #0000ff">def</span> set_wedge():
+  
+      A = vertex(pos=vec(0, 0, 0), color=color.orange, v=vec(0, 0, 0), a=vec(M_a_x, 0, 0))
+  
+      B = vertex(pos=vec(10/tan(radians(theta)), 0, 0), color=color.purple, v=vec(0, 0, 0), a=vec(M_a_x, 0, 0))
+  
+      C = vertex(pos=vec(10/tan(radians(theta)), 0, 10), color=color.green, v=vec(0, 0, 0), a=vec(M_a_x, 0, 0))
+  
+      D = vertex(pos=vec(0, 0, 10), color=color.blue, v=vec(0, 0, 0), a=vec(M_a_x, 0, 0))
+  
+      E = vertex(pos=vec(0, 10, 10), color=color.cyan, v=vec(0, 0, 0), a=vec(M_a_x, 0, 0))
+  
+      F = vertex(pos=vec(0, 10, 0), color=color.red, v=vec(0, 0, 0), a=vec(M_a_x, 0, 0))
+  
+      apex = [A, B, C, D, E, F]
+  
+  
+  
+      T1 = triangle(v0=E, v1=D, v2=C)
+  
+      T2 = triangle(v0=F, v1=A, v2=B)
+  
+      Q1 = quad(v0=F, v1=E, v2=D, v3=A)
+  
+      Q2 = quad(v0=F, v1=E, v2=C, v3=B)
+  
+      Q3 = quad(v0=A, v1=B, v2=C, v3=D)
+  
+      <span style="color: #0000ff">return</span> A, B, C, D, E, F
+  
+  A, B, C, D, E, F = set_wedge()
+  
+  apex = [A, B, C, D, E, F]
+  
+  
+  
+  
+  
+  <span style="color: #008000">#地板</span>
+  
+  
+  
+  floor = box(pos=vec(0,0,0), size=vec(300, 1, 30), color=color.blue, v=vec(0, 0, 0), 
+  
+              a=vec(0, 0, 0))
+  
+  
+  
+  <span style="color: #008000"># 小球</span>
+  
+  
+  
+  ball = sphere(pos=vec(1.5/sin(radians(theta)), 10, 5), radius=1.5, v=vec(0, 0, 0),
+  
+              a=vec(m_a_x, m_a_y, 0), texture=textures.wood)
+  
+  
+  
+  
+  
+  <span style="color: #008000"># 作圖</span>
+  
+  
+  
+  g1 = graph(title=<span style="color: #a31515">&#39;&lt;b&gt;Velocity (x direction)&lt;/b&gt;&#39;</span>, 
+  
+             xtitle=<span style="color: #a31515">&#39;&lt;b&gt;time&lt;/b&gt;&#39;</span>, ytitle=<span style="color: #a31515">&#39;&lt;b&gt;P&lt;/b&gt;&#39;</span>, 
+  
+             align=<span style="color: #a31515">&#39;left&#39;</span>, width=500, height=300)
+  
+  g2 = graph(title=<span style="color: #a31515">&#39;&lt;b&gt;Energy&lt;b&gt;&#39;</span>, xtitle=<span style="color: #a31515">&#39;&lt;b&gt;time&lt;/b&gt;&#39;</span>, 
+  
+             ytitle=<span style="color: #a31515">&#39;&lt;b&gt;E&lt;/b&gt;&#39;</span>, align=<span style="color: #a31515">&#39;left&#39;</span>, width=500, height=300)
+  
+  
+  
+  <span style="color: #008000"># 動量</span>
+  
+  
+  m_v = gdots(graph=g1, color=color.red)
+  
+  M_v = gdots(graph=g1, color=color.green)
+  
+  
+  
+  <span style="color: #008000"># 能量</span>
+  
+  
+  
+  m_E = gdots(graph=g2, color=color.blue)
+  
+  M_E = gdots(graph=g2, color=color.red)
+  
+  total_E = gdots(graph=g2, color=color.green)
+  
+  
+  
+  <span style="color: #008000">#運動動畫</span>
+  
+  
+  
+  dt = 0.01
+  
+  t = 0
+  
+  
+  
+  <span style="color: #0000ff">while</span> True:
+  
+      rate(1/dt)
+      
+      <span style="color: #0000ff">if</span> ball.pos.x &gt; 50:
+          
+          running = False
+  
+      <span style="color: #0000ff">if</span> running:
+  
+  
+  
+          <span style="color: #008000"># 小木塊移動</span>
+  
+  
+  
+          ball.v.x += ball.a.x * dt
+  
+          ball.pos.x += ball.v.x * dt
+  
+          ball.v.y += ball.a.y * dt
+  
+          ball.pos.y += ball.v.y * dt
+  
+  
+  
+          <span style="color: #008000"># 大木塊移動</span>
+  
+  
+  
+          <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0,6):
+  
+              apex[i].v.x += apex[i].a.x * dt
+  
+              apex[i].pos.x += apex[i].v.x * dt
+  
+  
+  
+          <span style="color: #008000"># 當木塊到底</span>
+  
+  
+  
+          <span style="color: #0000ff">if</span> ball.pos.y &lt;= ball.radius+floor.size.y/2:
+  
+  
+  
+              <span style="color: #008000">#小球運動</span>
+  
+              ball.v.x = (ball.v.x**2 + ball.v.y**2)**0.5
+  
+              ball.a.x, ball.a.y, ball.v.y = 0, 0, 0
+  
+              ball.up = vec(0, 1, 0)
+  
+              ball.pos.x += ball.v.x * dt
+  
+  
+  
+              <span style="color: #008000">#木塊運動</span>
+  
+              <span style="color: #0000ff">for</span> i <span style="color: #0000ff">in</span> range(0,6):
+  
+                  apex[i].a.x = 0
+  
+                  apex[i].pos.x += apex[i].v.x * dt
+  
+  
+  
+          <span style="color: #008000"># 作圖(動量和能量)，到達底部後不畫動量</span>
+  
+          <span style="color: #0000ff">if</span> s0.number == None: tmp_M = M
+          <span style="color: #0000ff">else</span>: tmp_M = s0.number
+          <span style="color: #0000ff">if</span> s3.number == None: tmp_m = m
+          <span style="color: #0000ff">else</span>: tmp_m = s3.number
+  
+          <span style="color: #0000ff">if</span> ball.pos.y &gt;= ball.radius+floor.size.y/2:
+  
+              p = ball.v.x * tmp_m + A.v.x * tmp_M
+  
+              m_v.plot(pos=(t, ball.v.x))
+  
+              M_v.plot(pos=(t, A.v.x))
+  
+              <span style="color: #008000"># m_p.plot(pos=(t, m * ball.v.x))</span>
+  
+              <span style="color: #008000"># M_p.plot(pos=(t, s0.value * A.v.x))</span>
+  
+  
+  
+          K = 0.5*tmp_m*(ball.v.x**2 + ball.v.y**2) + 0.5*tmp_M*A.v.x**2
+  
+          U = tmp_m*g*(ball.pos.y - (ball.radius+floor.size.y/2))
+  
+  
+  
+          m_E.plot(pos=(t, K))
+  
+          M_E.plot(pos=(t, U))
+  
+  
+  
+          total_E.plot(pos=(t, K+U))
+  
+  
+  
+          t += dt
+  </pre></td></tr></table></div>
+  
