@@ -1,356 +1,357 @@
 <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000"># Morris 2019/11/21</span>
-
-<span style="color: #0000ff">from</span> vpython <span style="color: #0000ff">import</span> *
-<span style="color: #008000"># from random import *</span>
-
-<span style="color: #008000">############################################################################################</span>
-
-k, m = 1, 5
-<span style="color: #008000"># critical, under, over = 2*m*(k/m)**0.5, 0.2, 10</span>
-gamma = 2*(m*k)**0.5
-
-
-<span style="color: #008000">############################################################################################</span>
-
-scene = canvas(width=1000, height=600, background=vec(0, 0.6, 0.6), align=<span style="color: #a31515">&#39;left&#39;</span>)
-scene.camera.pos = vec(-35, 80, 90)
-scene.camera.axis = vec(25, -60, -90)
-
-<span style="color: #008000">############################################################################################</span>
-
-<span style="color: #008000"># box()</span>
-<span style="color: #008000"># scene.caption = &quot;\\(m\\dfrac {d^{2}x}{dt^{2}}+\\gamma \\dfrac {dx}{dt}+kx = 0\\)&quot;</span>
-
-<span style="color: #008000"># MathJax.Hub.Queue([&quot;Typeset&quot;,MathJax.Hub])</span>
-
-<span style="color: #008000">############################################################################################</span>
-
-A = vertex(pos=vec(50, 45, 17), color=color.green, opacity=0.2)
-B = vertex(pos=vec(50, 45, -17), color=color.green, opacity=0.2)
-D = vertex(pos=vec(-50, 45, 17), color=color.green, opacity=0.2)
-C = vertex(pos=vec(-50, 45, -17), color=color.green, opacity=0.2)
-
-E = vertex(pos=vec(50, -35, 17), color=color.green, opacity=0.2)
-F = vertex(pos=vec(50, -35, -17), color=color.green, opacity=0.2)
-H = vertex(pos=vec(-50, -35, 17), color=color.green, opacity=0.2)
-G = vertex(pos=vec(-50, -35, -17), color=color.green, opacity=0.2)
-
-S1 = quad(v0=E, v1=F, v2=G, v3=H)
-S2 = quad(v0=A, v1=B, v2=E, v3=H)
-S3 = quad(v0=B, v1=C, v2=F, v3=E)
-S4 = quad(v0=C, v1=D, v2=G, v3=F)
-S5 = quad(v0=D, v1=A, v2=H, v3=G)
-
-
-<span style="color: #008000">############################################################################################</span>
-block = []
-
-spring = helix(pos=vec(0, 33, 0), axis=vec(0, 37, 0), radius=3, coil=30,
-                v=vec(0, 0, 0), a=vec(0, -35*k/m, 0))
-
-a = box(pos=vec(0, 35, 0), size=vec(7, 7, 7), color=color.red, v=vec(0, 0, 0),
-             a=vec(0, -35*k/m, 0))
-
-block.append(a)
-
-water = box(pos=vec(0, 2, 0), size=vec(100, 74, 34), color=vec(0, 0, 1), opacity=0.2)
-
-celling = box(pos=vec(0, 70, 0), size=vec(100, 2, 34), color=vec(0.3, 0.3, 0.3))
-
-
-
-<span style="color: #008000">############################################################################################</span>
-
-running = False
-
-<span style="color: #0000ff">def</span> Run(r):
-    <span style="color: #0000ff">global</span> running
-    running = <span style="color: #0000ff">not</span> running
-
-    <span style="color: #0000ff">if</span> running: 
-        r.text = <span style="color: #a31515">&quot;Pause&quot;</span>
-
-    <span style="color: #0000ff">else</span>: 
-        r.text = <span style="color: #a31515">&quot;Run&quot;</span>
-
-i = 0
-yt = []
-<span style="color: #0000ff">def</span> Restart():
-    <span style="color: #0000ff">global</span> running, t, i
-    k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
-    running = False
-    b1.text = <span style="color: #a31515">&#39;Run&#39;</span>
-    t = 0
-    i += 1
-    x, y, z = random(), random(), random()
-    yt_idx = gcurve(graph=g1, color=vec(x, y, z))
-    yt.append(yt_idx)
-    a = box(pos=vec(0, 35, 0), size=vec(7, 7, 7), color=vec(x, y, z), v=vec(0, 0, 0),
-             a=vec(0, -35*k0/m0, 0))
-    block.append(a)
-    block[i-1].visible = False
-    spring.pos = vec(0, 33, 0)
-    spring.v = vec(0, 0, 0)
-    spring.a = vec(0, -35*k0/m0, 0)
-    spring.axis = vec(0, 37, 0)
-
-<span style="color: #0000ff">def</span> set_k():
-    k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
-    critical(k0, m0, gamma0)
-
-<span style="color: #0000ff">def</span> set_m():
-    k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
-    critical = critical(k0, m0, gamma0)
-
-<span style="color: #0000ff">def</span> set_gamma():
-    k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)    
-    critical(k0, m0, gamma0)
-
-<span style="color: #0000ff">def</span> test_none(k_tmp, m_tmp, gamma_tmp):
-    <span style="color: #0000ff">if</span> k_tmp == None: k_ans = k 
-    <span style="color: #0000ff">else</span>: k_ans = k_tmp
-    <span style="color: #0000ff">if</span> m_tmp == None: m_ans = m
-    <span style="color: #0000ff">else</span>: m_ans = m_tmp
-    <span style="color: #0000ff">if</span> gamma_tmp == None: gamma_ans = gamma
-    <span style="color: #0000ff">else</span>: gamma_ans = gamma_tmp
-    <span style="color: #0000ff">return</span> k_ans, m_ans, gamma_ans
-
-<span style="color: #0000ff">def</span> critical(k_tmp, m_tmp, gamma_tmp):
-    k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
-    txt1.text = 2*(k0*m0)**0.5
-    <span style="color: #0000ff">return</span> 0
-<span style="color: #008000">############################################################################################</span>
-
-scene.append_to_caption(<span style="color: #a31515">&#39;      &#39;</span>)
-
-b1 = button(text=<span style="color: #a31515">&quot;Run&quot;</span>, bind=Run, background=color.cyan)
-
-scene.append_to_caption(<span style="color: #a31515">&#39;      &#39;</span>)
-
-b2 = button(text=<span style="color: #a31515">&quot;Restart&quot;</span>, bind=Restart, background=color.cyan)
-
-scene.append_to_caption(<span style="color: #a31515">&#39;\n\n      k =     &#39;</span>)
-ipt_k = winput(bind=set_k, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
-
-scene.append_to_caption(<span style="color: #a31515">&#39;\n\n      m =     &#39;</span>)
-ipt_m = winput(bind=set_m, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
-
-scene.append_to_caption(<span style="color: #a31515">&#39;\n\n      &amp;Gamma; =     &#39;</span>)
-ipt_gamma = winput(bind=set_gamma, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
-
-scene.append_to_caption(<span style="color: #a31515">&#39;\n\n      (for critical damping &amp;Gamma; = &#39;</span>)
-txt1 = wtext(text=2*(k*m)**0.5)
-scene.append_to_caption(<span style="color: #a31515">&#39;)&#39;</span>)
-
-scene.append_to_caption(<span style="color: #a31515">&#39;&lt;i&gt;\n\n(Please press enter after setting each parameter, otherwise \n it will run on default parameter)&lt;/i&gt;&#39;</span>)
-
-<span style="color: #008000">############################################################################################</span>
-g1 = graph(title=<span style="color: #a31515">&#39;Position&#39;</span>, xtitle=<span style="color: #a31515">&#39;t&#39;</span>, ytitle=<span style="color: #a31515">&#39;position&#39;</span>, align=<span style="color: #a31515">&#39;right&#39;</span>, width=500,
-           height=300)
-
-yt_idx = gcurve(graph=g1, color=color.red)
-yt.append(yt_idx)
-<span style="color: #008000">############################################################################################</span>
-
-dt = 0.01
-t = 0
-
-<span style="color: #0000ff">while</span> True:
-
-    <span style="color: #0000ff">if</span> running:
-        k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
-
-        rate(300)
-        block[i].a.y = -k0*block[i].pos.y/m0 - block[i].v.y*gamma0/m0
-        block[i].v.y += block[i].a.y*dt
-        block[i].pos.y += block[i].v.y*dt
-
-
-        spring.a.y = -k0*spring.pos.y/m0 - spring.v.y*gamma0/m0
-        spring.v.y += spring.a.y*dt
-        spring.pos.y += spring.v.y*dt
-
-
-        spring.axis.y = spring.axis.y - spring.v.y*dt
-
-        yt[i].plot(pos=(t, block[i].pos.y))
-
-        t += dt
-</pre></td></tr></table></div>
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+   10
+   11
+   12
+   13
+   14
+   15
+   16
+   17
+   18
+   19
+   20
+   21
+   22
+   23
+   24
+   25
+   26
+   27
+   28
+   29
+   30
+   31
+   32
+   33
+   34
+   35
+   36
+   37
+   38
+   39
+   40
+   41
+   42
+   43
+   44
+   45
+   46
+   47
+   48
+   49
+   50
+   51
+   52
+   53
+   54
+   55
+   56
+   57
+   58
+   59
+   60
+   61
+   62
+   63
+   64
+   65
+   66
+   67
+   68
+   69
+   70
+   71
+   72
+   73
+   74
+   75
+   76
+   77
+   78
+   79
+   80
+   81
+   82
+   83
+   84
+   85
+   86
+   87
+   88
+   89
+   90
+   91
+   92
+   93
+   94
+   95
+   96
+   97
+   98
+   99
+  100
+  101
+  102
+  103
+  104
+  105
+  106
+  107
+  108
+  109
+  110
+  111
+  112
+  113
+  114
+  115
+  116
+  117
+  118
+  119
+  120
+  121
+  122
+  123
+  124
+  125
+  126
+  127
+  128
+  129
+  130
+  131
+  132
+  133
+  134
+  135
+  136
+  137
+  138
+  139
+  140
+  141
+  142
+  143
+  144
+  145
+  146
+  147
+  148
+  149
+  150
+  151
+  152
+  153
+  154
+  155
+  156
+  157
+  158
+  159
+  160
+  161
+  162
+  163
+  164
+  165
+  166
+  167
+  168
+  169
+  170
+  171
+  172
+  173
+  174
+  175
+  176
+  177
+  178</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000"># Morris 2019/11/21</span>
+  
+  <span style="color: #0000ff">from</span> vpython <span style="color: #0000ff">import</span> *
+  <span style="color: #008000"># from random import *</span>
+  
+  <span style="color: #008000">############################################################################################</span>
+  
+  k, m = 1, 5
+  <span style="color: #008000"># critical, under, over = 2*m*(k/m)**0.5, 0.2, 10</span>
+  gamma = 2*(m*k)**0.5
+  
+  
+  <span style="color: #008000">############################################################################################</span>
+  
+  scene = canvas(width=1000, height=600, background=vec(0, 0.6, 0.6), align=<span style="color: #a31515">&#39;left&#39;</span>)
+  scene.camera.pos = vec(-35, 80, 90)
+  scene.camera.axis = vec(25, -60, -90)
+  
+  <span style="color: #008000">############################################################################################</span>
+  
+  <span style="color: #008000"># box()</span>
+  <span style="color: #008000"># scene.caption = &quot;\\(m\\dfrac {d^{2}x}{dt^{2}}+\\gamma \\dfrac {dx}{dt}+kx = 0\\)&quot;</span>
+  
+  <span style="color: #008000"># MathJax.Hub.Queue([&quot;Typeset&quot;,MathJax.Hub])</span>
+  
+  <span style="color: #008000">############################################################################################</span>
+   
+  A = vertex(pos=vec(50, 45, 17), color=color.green, opacity=0.2)
+  B = vertex(pos=vec(50, 45, -17), color=color.green, opacity=0.2)
+  D = vertex(pos=vec(-50, 45, 17), color=color.green, opacity=0.2)
+  C = vertex(pos=vec(-50, 45, -17), color=color.green, opacity=0.2)
+  
+  E = vertex(pos=vec(50, -35, 17), color=color.green, opacity=0.2)
+  F = vertex(pos=vec(50, -35, -17), color=color.green, opacity=0.2)
+  H = vertex(pos=vec(-50, -35, 17), color=color.green, opacity=0.2)
+  G = vertex(pos=vec(-50, -35, -17), color=color.green, opacity=0.2)
+  
+  S1 = quad(v0=E, v1=F, v2=G, v3=H)
+  S2 = quad(v0=A, v1=B, v2=E, v3=H)
+  S3 = quad(v0=B, v1=C, v2=F, v3=E)
+  S4 = quad(v0=C, v1=D, v2=G, v3=F)
+  S5 = quad(v0=D, v1=A, v2=H, v3=G)
+  
+  
+  <span style="color: #008000">############################################################################################</span>
+  block = []
+  
+  spring = helix(pos=vec(0, 33, 0), axis=vec(0, 37, 0), radius=3, coil=30,
+                  v=vec(0, 0, 0), a=vec(0, -35*k/m, 0))
+  
+  a = box(pos=vec(0, 35, 0), size=vec(7, 7, 7), color=color.red, v=vec(0, 0, 0),
+               a=vec(0, -35*k/m, 0))
+  
+  block.append(a)
+  
+  water = box(pos=vec(0, 2, 0), size=vec(100, 74, 34), color=vec(0, 0, 1), opacity=0.2)
+  
+  celling = box(pos=vec(0, 70, 0), size=vec(100, 2, 34), color=vec(0.3, 0.3, 0.3))
+  
+  
+  
+  <span style="color: #008000">############################################################################################</span>
+  
+  running = False
+  
+  <span style="color: #0000ff">def</span> Run(r):
+      <span style="color: #0000ff">global</span> running
+      running = <span style="color: #0000ff">not</span> running
+  
+      <span style="color: #0000ff">if</span> running: 
+          r.text = <span style="color: #a31515">&quot;Pause&quot;</span>
+  
+      <span style="color: #0000ff">else</span>: 
+          r.text = <span style="color: #a31515">&quot;Run&quot;</span>
+  
+  i = 0
+  yt = []
+  <span style="color: #0000ff">def</span> Restart():
+      <span style="color: #0000ff">global</span> running, t, i
+      k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
+      running = False
+      b1.text = <span style="color: #a31515">&#39;Run&#39;</span>
+      t = 0
+      i += 1
+      x, y, z = random(), random(), random()
+      yt_idx = gcurve(graph=g1, color=vec(x, y, z))
+      yt.append(yt_idx)
+      a = box(pos=vec(0, 35, 0), size=vec(7, 7, 7), color=vec(x, y, z), v=vec(0, 0, 0),
+               a=vec(0, -35*k0/m0, 0))
+      block.append(a)
+      block[i-1].visible = False
+      spring.pos = vec(0, 33, 0)
+      spring.v = vec(0, 0, 0)
+      spring.a = vec(0, -35*k0/m0, 0)
+      spring.axis = vec(0, 37, 0)
+  
+  <span style="color: #0000ff">def</span> set_k():
+      k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
+      critical(k0, m0, gamma0)
+  
+  <span style="color: #0000ff">def</span> set_m():
+      k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
+      critical(k0, m0, gamma0)
+  
+  <span style="color: #0000ff">def</span> set_gamma():
+      k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)    
+      critical(k0, m0, gamma0)
+  
+  <span style="color: #0000ff">def</span> test_none(k_tmp, m_tmp, gamma_tmp):
+      <span style="color: #0000ff">if</span> k_tmp == None: k_ans = k 
+      <span style="color: #0000ff">else</span>: k_ans = k_tmp
+      <span style="color: #0000ff">if</span> m_tmp == None: m_ans = m
+      <span style="color: #0000ff">else</span>: m_ans = m_tmp
+      <span style="color: #0000ff">if</span> gamma_tmp == None: gamma_ans = gamma
+      <span style="color: #0000ff">else</span>: gamma_ans = gamma_tmp
+      <span style="color: #0000ff">return</span> k_ans, m_ans, gamma_ans
+  
+  <span style="color: #0000ff">def</span> critical(k_tmp, m_tmp, gamma_tmp):
+      k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
+      txt1.text = 2*(k0*m0)**0.5
+      <span style="color: #0000ff">return</span> 0
+  <span style="color: #008000">############################################################################################</span>
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;      &#39;</span>)
+  
+  b1 = button(text=<span style="color: #a31515">&quot;Run&quot;</span>, bind=Run, background=color.cyan)
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;      &#39;</span>)
+  
+  b2 = button(text=<span style="color: #a31515">&quot;Restart&quot;</span>, bind=Restart, background=color.cyan)
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;\n\n      k =     &#39;</span>)
+  ipt_k = winput(bind=set_k, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;\n\n      m =     &#39;</span>)
+  ipt_m = winput(bind=set_m, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;\n\n      &amp;Gamma; =     &#39;</span>)
+  ipt_gamma = winput(bind=set_gamma, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;\n\n      (for critical damping &amp;Gamma; = &#39;</span>)
+  txt1 = wtext(text=2*(k*m)**0.5)
+  scene.append_to_caption(<span style="color: #a31515">&#39;)&#39;</span>)
+  
+  scene.append_to_caption(<span style="color: #a31515">&#39;&lt;i&gt;\n\n(Please press enter after setting each parameter to confirm the setting,\n otherwise it will run on default parameter)&lt;/i&gt;&#39;</span>)
+  
+  <span style="color: #008000">############################################################################################</span>
+  g1 = graph(title=<span style="color: #a31515">&#39;Position&#39;</span>, xtitle=<span style="color: #a31515">&#39;t&#39;</span>, ytitle=<span style="color: #a31515">&#39;position&#39;</span>, align=<span style="color: #a31515">&#39;right&#39;</span>, width=500,
+             height=300)
+  
+  yt_idx = gcurve(graph=g1, color=color.red)
+  yt.append(yt_idx)
+  <span style="color: #008000">############################################################################################</span>
+  
+  dt = 0.01
+  t = 0
+  
+  <span style="color: #0000ff">while</span> True:
+  
+      <span style="color: #0000ff">if</span> running:
+          k0, m0, gamma0 = test_none(ipt_k.number, ipt_m.number, ipt_gamma.number)
+  
+          rate(300)
+          block[i].a.y = -k0*block[i].pos.y/m0 - block[i].v.y*gamma0/m0
+          block[i].v.y += block[i].a.y*dt
+          block[i].pos.y += block[i].v.y*dt
+  
+  
+          spring.a.y = -k0*spring.pos.y/m0 - spring.v.y*gamma0/m0
+          spring.v.y += spring.a.y*dt
+          spring.pos.y += spring.v.y*dt
+  
+  
+          spring.axis.y = spring.axis.y - spring.v.y*dt
+  
+          yt[i].plot(pos=(t, block[i].pos.y))
+  
+          t += dt
+  </pre></td></tr></table></div>
+  
