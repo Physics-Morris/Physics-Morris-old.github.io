@@ -1,0 +1,432 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000"># Morris H. 12/7</span>
+
+<span style="color: #0000ff">from</span> vpython <span style="color: #0000ff">import</span> *
+
+
+<span style="color: #008000"># initial perimeter setting</span>
+m, M, theta, v0, e, g = 1, 10, 45, 100, 1, 98
+
+
+<span style="color: #008000"># scene setting</span>
+<span style="color: #0000ff">def</span> set_scene():
+    <span style="color: #0000ff">global</span> scene
+    scene = canvas(width=1000, height=600, background=vec(0, 0.6, 0.6), align=<span style="color: #a31515">&#39;left&#39;</span>, range=200)
+    floor = box(pos=vec(0, 0, 0), size=vec(1000, 1, 1000), color=color.blue)
+    building1 = box(pos=vec(100, 50, 0), size=vec(10, 100, 10), color=color.cyan, 
+                    up=vec(0,1,0))
+    scene.camera.pos = vec(0, 60, 200)
+
+set_scene()
+building2 = box(pos=vec(-100, 50.5, 0), size=vec(20, 100, 50), color=color.orange, 
+    up=vec(0,1,0,), v=vec(0, 0, 0), w=0)
+
+
+<span style="color: #008000"># generate ball</span>
+ball = []
+i = 0
+<span style="color: #0000ff">def</span> gen_ball():
+    <span style="color: #0000ff">global</span> i
+    a = sphere(pos=vec(100, 105, 0), radius=5, color=vec(random(), random(), random()), 
+               v=vec(-v0*cos(radians(theta)), v0*sin(radians(theta)), 0), a=vec(0, -g, 0))
+    ball.append(a)
+    i += 1
+gen_ball()
+
+<span style="color: #008000"># set theta</span>
+<span style="color: #0000ff">def</span> set_theta(t):
+    <span style="color: #0000ff">global</span> e, v0, theta
+    e, v0, theta = test_none(ipt_e.number, ipt_v0.number, ipt_theta.number)
+    <span style="color: #0000ff">return</span> 0
+    
+<span style="color: #008000"># set v0</span>
+<span style="color: #0000ff">def</span> set_v0(v):
+    <span style="color: #0000ff">global</span> e, v0, theta
+    e, v0, theta = test_none(ipt_e.number, ipt_v0.number, ipt_theta.number)
+    <span style="color: #0000ff">return</span> 0
+
+<span style="color: #008000"># shoot</span>
+<span style="color: #0000ff">def</span> shoot():
+    gen_ball()
+    <span style="color: #008000"># ball[i].v = vec(-v0*cos(radians(theta)), </span>
+    <span style="color: #008000">#                   v0*sin(radians(theta)), 0)</span>
+
+<span style="color: #008000"># set e</span>
+<span style="color: #0000ff">def</span> set_e(g):
+    <span style="color: #0000ff">global</span> e, v0, theta
+    e, v0, theta = test_none(ipt_e.number, ipt_v0.number, ipt_theta.number)
+    <span style="color: #0000ff">return</span> 0
+
+<span style="color: #008000"># clean all ball</span>
+<span style="color: #0000ff">def</span> clc_ball():
+    <span style="color: #0000ff">global</span> t
+    <span style="color: #008000"># print(len(ball))</span>
+    <span style="color: #0000ff">if</span> len(ball) != 0:
+        <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(len(ball)):
+            ball[j].visible = False
+        ball[:] = []
+    building2.pos = vec(-100, 50.5, 0) 
+    building2.up=vec(0, 1, 0)
+    building2.v=vec(0, 0, 0)
+    building2.w=0
+    w.delete()
+    t = 0
+
+<span style="color: #0000ff">def</span> test_none(e_tmp, v0_tmp, theta_tmp):
+    <span style="color: #0000ff">if</span> e_tmp == None: e_ans = e 
+    <span style="color: #0000ff">elif</span> (e_tmp &gt; 1 <span style="color: #0000ff">or</span> e_tmp &lt; 0): e_ans = e
+    <span style="color: #0000ff">else</span>: e_ans = e_tmp
+
+    <span style="color: #0000ff">if</span> v0_tmp == None: v0_ans = v0
+    <span style="color: #0000ff">else</span>: v0_ans = v0_tmp
+
+    <span style="color: #0000ff">if</span> theta_tmp == None: theta_ans = theta
+    <span style="color: #0000ff">else</span>: theta_ans = theta_tmp
+
+    <span style="color: #0000ff">return</span> e_ans, v0_ans, theta_ans
+
+<span style="color: #008000"># create widgets</span>
+
+scene.append_to_caption(<span style="color: #a31515">&#39;      e: &#39;</span>)
+ipt_e = winput(bind=set_e, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+scene.append_to_caption(<span style="color: #a31515">&#39; \n\n\n&#39;</span>)
+
+scene.append_to_caption(<span style="color: #a31515">&#39;      Angle: &#39;</span>)
+ipt_theta = winput(bind=set_theta, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+scene.append_to_caption(<span style="color: #a31515">&#39; (Degree)\n\n\n&#39;</span>)
+
+scene.append_to_caption(<span style="color: #a31515">&#39;      V0:&#39;</span>)
+ipt_v0 = winput(bind=set_v0, type=<span style="color: #a31515">&#39;numeric&#39;</span>)
+scene.append_to_caption(<span style="color: #a31515">&#39;                                    &#39;</span>)
+
+b1 = button(text=<span style="color: #a31515">&quot;Shoot&quot;</span>, bind=shoot, 
+            background=color.purple)
+
+b2 = button(text=<span style="color: #a31515">&quot;Restart&quot;</span>, bind=clc_ball, 
+            background=color.purple)
+
+scene.append_to_caption(<span style="color: #a31515">&#39;\n\n&#39;</span>)
+
+scene.append_to_caption(<span style="color: #a31515">&#39;&lt;i&gt;\n\n(Please press enter after setting each parameter, otherwise \n it will run on default parameter)&lt;/i&gt;&#39;</span>)
+
+
+<span style="color: #008000"># calculate collide speed</span>
+<span style="color: #0000ff">def</span> collide(m, M, v1, v2):
+    v1f = (m*v1 + M*v2 + e*M*(v2 - v1))/(m + M)
+    v2f = (m*v1 + M*v2 + e*m*(v1 - v2))/(m + M)
+    <span style="color: #0000ff">return</span> v1f, v2f
+
+<span style="color: #008000"># determine the boundary of block</span>
+<span style="color: #008000"># def boundary():</span>
+    <span style="color: #008000"># b1 = -85 - y*sin(theta)</span>
+
+<span style="color: #008000"># calculate angular acc</span>
+<span style="color: #0000ff">def</span> angular_acc():
+    center = building2.pos.x
+    r = abs(-110-building2.pos.x)
+    I = (M*(20**2+100**2)/12 + M*(10**2+50**2))
+    <span style="color: #0000ff">if</span> -100-center &lt;= 10:
+        <span style="color: #0000ff">return</span> M*g*r/I
+    <span style="color: #0000ff">elif</span> -100-center &gt; 10:
+        <span style="color: #0000ff">return</span> -M*g*r/I
+    <span style="color: #0000ff">else</span>:
+        <span style="color: #0000ff">return</span> 0
+
+<span style="color: #0000ff">def</span> angular_v(vx, r):
+    <span style="color: #0000ff">return</span> vx/r
+
+
+<span style="color: #008000"># plot</span>
+g1 = graph(title=<span style="color: #a31515">&#39;&lt;b&gt;Angular Velocity (for block)&lt;/b&gt;&#39;</span>, 
+           xtitle=<span style="color: #a31515">&#39;&lt;b&gt;time&lt;/b&gt;&#39;</span>, ytitle=<span style="color: #a31515">&#39;&lt;b&gt;Angular Velocity&lt;/b&gt;&#39;</span>, align=<span style="color: #a31515">&#39;right&#39;</span>, 
+           width=500, height=300)
+
+w = gdots(graph=g1)
+
+t, dt = 0, 0.01
+<span style="color: #0000ff">while</span> True:
+    rate(1/dt)
+    <span style="color: #0000ff">for</span> j <span style="color: #0000ff">in</span> range(len(ball)):
+
+        <span style="color: #008000"># motion when hit thte ground</span>
+        <span style="color: #0000ff">if</span> ball[j].pos.y &lt;= 5.5  <span style="color: #0000ff">and</span> ball[j].pos.x &gt;= -85:
+            ball[j].v.y *= -e
+            ball[j].v += ball[j].a*dt
+            ball[j].pos += ball[j].v*dt
+
+            <span style="color: #008000"># if the velocity is too slow, stay on the ground</span>
+            <span style="color: #0000ff">if</span> ball[j].v.y &lt;= 0.1:
+                ball[j].pos.y = 5.5
+
+        <span style="color: #008000"># motion when hit the block</span>
+        <span style="color: #0000ff">elif</span> ball[j].pos.x &lt;= -85 <span style="color: #0000ff">and</span> ball[j].v.x &lt;= 0 <span style="color: #0000ff">and</span> ball[j].pos.y &lt;= 100 <span style="color: #0000ff">and</span> ball[j].pos.x &gt;= -115 <span style="color: #0000ff">and</span> building2.up == vec(0, 1, 0):
+            
+            v1f, v2f = collide(m, M, ball[j].v.x, building2.v.x)
+
+            <span style="color: #008000"># motion of ball</span>
+            ball[j].v.x = v1f
+            ball[j].v += ball[j].a*dt
+            ball[j].pos += ball[j].v*dt
+
+            <span style="color: #008000"># motion of block</span>
+            building2.w = angular_v(v2f, ball[j].pos.y-0.5)
+            dtheta = -building2.w*dt
+            building2.rotate(origin=vec(-110, 0, 0), axis=vec(0, 0, 1), 
+                             angle=dtheta)
+            
+
+        
+        <span style="color: #008000"># motion when in the air</span>
+        <span style="color: #0000ff">else</span>:
+            ball[j].v += ball[j].a*dt
+            ball[j].pos += ball[j].v*dt
+
+            
+            building2.w += angular_acc()*dt
+            dtheta = -building2.w*dt
+
+            rotate_max = degrees(diff_angle(vec(0,1,0), building2.up))
+
+            <span style="color: #008000"># prevent over turn</span>
+            <span style="color: #0000ff">if</span> dtheta &gt; rotate_max:
+                dtheta = rotate_max
+            
+            <span style="color: #008000"># when the block hit the ground</span>
+            <span style="color: #0000ff">if</span> building2.pos.y &lt;= 10.5:
+                building2.w = 0
+                <span style="color: #008000"># building2.pos = vec(-160, 10.5, 0)</span>
+                building2.up = vec(-1, 0, 0)
+                dtheta = 0
+
+            <span style="color: #0000ff">if</span> building2.pos.x &gt; -100:
+                <span style="color: #008000"># building2.pos = vec(-100, 50.5, 0) </span>
+                building2.up = vec(0, 1, 0)
+                building2.w = 0
+                dtheta = 0
+
+            building2.rotate(origin=vec(-110, 0, 0), axis=vec(0, 0, 1), 
+                             angle=dtheta)
+
+    t += dt
+
+    <span style="color: #008000"># plot</span>
+    w.plot(pos=(t, building2.w))
+
+
+
+            
+</pre></td></tr></table></div>
