@@ -48,7 +48,6 @@ grid-template-areas:
 .middle,
 .right {
 padding: 10px;
-font-style: italic;
 font-size: 2vw;
 line-height: 200%;
 }
@@ -95,3 +94,4 @@ text-align: center;
 }
 
 .gist .blob-code-inner{ font-size:20px !important; }
+

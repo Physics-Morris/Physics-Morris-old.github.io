@@ -3,15 +3,7 @@
     <head>
         <title>Eletric Potential and Field of a dipole</title>
         <link rel="stylesheet" type="text/css" href="../style_code.css">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta http-equiv="content-style-type" content="text/css" />
-        <script src="TSGP/jquery-1.6.1.js" type="text/javascript"></script>
-	    <script type="text/x-mathjax-config">
-		    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-	    </script>
-	    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <link rel="stylesheet" type="text/css" href="http://espresso.phy.ncu.edu.tw/~peilong/physics_2014/note.css" />
-        <script language="JavaScript" src="http://140.115.31.66/~peilong/lib/latex.js"></script>
+        </script>
     </head>
     <body>
         <div class='topnav'>
@@ -31,16 +23,16 @@
                 <script src="https://gist.github.com/MorrisHuang-skipper/8149e9003eba539f4f406af14b7cddcf.js"></script><br>
                 --> Then setting some important parameter.
                 <script src="https://gist.github.com/MorrisHuang-skipper/926b08f433bdc1a0c8a48623dc3e9334.js"></script><br>
-                --> Now come to the main function which will execute at the end.<br>
+                --> Now come to the main function which will be execute at the end.<br>
                 --> Main function is pretty straight forword, first create a scene that set userspin, userpan and userzoom to False
                 that desable scene to spin, pan and zoom.<br>
-                --> Then create a dipole that use the class 'Charge' that will explan later.<br>
+                --> Then create a dipole that use the class 'Charge' that will explain later.<br>
                 --> Finally create field and potnetial using function in the class 'Charge'.<br>
                 <script src="https://gist.github.com/MorrisHuang-skipper/c3aab3d666c8ec64eac3291c926d3d15.js"></script><br>
                 --> Create a class 'Charge' that handle the attribute and the method regarding of charges. 
                 <script src="https://gist.github.com/MorrisHuang-skipper/4618ca96590a8c3e5944710263df6387.js"></script><br>
-                --> Initialize the class that create sphere at a given position.<br>
-                --> Store the information of charge(position and charge of eletron), and info[0] and info[1] representing
+                --> Initialize charge class that create sphere at a given position.<br>
+                --> Store the information of charge(position and charge of eletron) in variable info, info[0] and info[1] representing
                 the position of the charge and the coulommb for the charge repectively.<br>
                 --> Red and blue represent negative and positive charge respectively<br>
                 <script src="https://gist.github.com/MorrisHuang-skipper/1e6995f54c22640fd186e2fcddc5bfcf.js"></script><br>
@@ -49,27 +41,23 @@
                 --> Using try-except syntax that prevent the error occured at the surface of the charge.<br>
                 --> Use function <i>field_color</i> that determine the color of the arrow at the given position that represent the magnitude of
                 the eletric field.<br>
-                --> Finally calcuate the direction and magnitude of the eletric field using below formala.<br>
-                <center>$E=\dfrac {KQ}{r^{2}}\widehat {r}$</center> 
                 <script src="https://gist.github.com/MorrisHuang-skipper/bea0d5be733335826b41dc5a662aa28e.js"></script><br>
-                --> Similarly create elettic potnetial in the given range using object quad.<br>
+                --> Similarly create eletric potnetial in the given range using object 'quad' from vpython.<br>
                 --> Using for loop that create quad wihtin the meshgrid.<br>
                 --> Using try-except syntax that prevent the error occured at the surface of the charge.<br>
                 --> Use function <i>potential_color</i> that determine the color of the quad at the given position that represent the magnitude of
                 the eletric potential.<br>
-                --> Finally calcuate the magnitude of the eletric potential using below formala.<br>
-                <center>$V=\dfrac {kQ}{r}$</center> 
                 <script src="https://gist.github.com/MorrisHuang-skipper/f1387ba30905701e748303784ef63006.js"></script><br>
-                --> Using logarithm to normalize the magnitude of the eletric field to (0, 1), so it can be used for mapping the color.
+                --> By taking logarithm to normalize the magnitude of the eletric field to (0, 1), so it can be used for mapping the color.
                 <script src="https://gist.github.com/MorrisHuang-skipper/74bd24832f4f1c6e9544110cd6148beb.js"></script><br>
-                --> Similary using logarithm to normalize the magnitude of the eletric potential to (0, 1) but only with different coefficient, so
+                --> Similary taking logarithm to normalize the magnitude of the eletric potential to (0, 1) but only with different coefficient, so
                 it can be used for mapping the color.
                 <script src="https://gist.github.com/MorrisHuang-skipper/bb7b5dd4549eba03781bce2c95275300.js"></script><br>
                 --> By using above normalized value the following two function that use these value to create a vector of color that deternine the
-                arrow or quad object that representing field and potential.
+                color of arrow and quad object that representing the strenght of field and potential.
                 <script src="https://gist.github.com/MorrisHuang-skipper/0139d83628f70cf7b88181ec3674cd3a.js"></script>
                 <script src="https://gist.github.com/MorrisHuang-skipper/0f7e21ecc2ef5f4d35b6d263721f852e.js"></script><br>
-                --> Using vpython object 'quad' that takes four vertex as input and create a quad with different color that represent eletirc potential strength.
+                --> Using vpython object 'quad' that takes four vertex as input and create a quad with unique color that represent eletirc potential strength.
                 <script src="https://gist.github.com/MorrisHuang-skipper/cd9ee640231ebbd199c74c017f632fe3.js"></script><br>
                 --> This function return a list of meshgrid that can be use to create eletric field and eletric potential.
                 <script src="https://gist.github.com/MorrisHuang-skipper/1a5dea2139c6f0067dc476143757b50c.js"></script><br>
