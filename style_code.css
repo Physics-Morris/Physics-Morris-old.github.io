@@ -44,54 +44,35 @@ grid-template-areas:
 /* grid-column-gap: 10px; - if you want gap between the columns */
 } 
 
-.left,
-.middle,
-.right {
-padding: 10px;
-font-size: 2vw;
-line-height: 200%;
-}
+.column {
+    float: left;
+  }
+  
+  /* Left and right column */
+  .column.side {
+    width: 20%;
+    font-size: 1.5vw;
+    line-height: 200%;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Middle column */
+  .column.middle {
+    width: 60%;
+    font-size: 1.5vw;
+    line-height: 200%;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+      width: 100%;
+    }
+  }
 
-/* Style the left column */
-.left {
-grid-area: left;
-font-size: 2vw;
-line-height: 200%;
-}
+.gist .blob-code-inner{ font-size:16px !important; }
 
-/* Style the middle column */
-.middle {
-grid-area: middle;
-font-size: 2vw;
-line-height: 200%;
-}
-
-/* Style the right column */
-.right {
-grid-area: right;
-font-size: 2vw;
-line-height: 200%;
-}
-
-/* Style the footer */
-.footer {
-grid-area: footer;
-background-color: white;
-padding: 10px;
-text-align: center;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-.grid-container  {
-  grid-template-areas: 
-    'header header header header header header' 
-    'left left left left left left' 
-    'middle middle middle middle middle middle' 
-    'right right right right right right' 
-    'footer footer footer footer footer footer';
-}
-}
-
-.gist .blob-code-inner{ font-size:20px !important; }
 
