@@ -79,7 +79,7 @@ grid-template-areas:
 
 body .gist .gist-file {
     margin-bottom: 0;
-    border: 1px dashed #adb5bd;
+    border: 1px  #adb5bd;
     border-radius: 0;
 }
 
