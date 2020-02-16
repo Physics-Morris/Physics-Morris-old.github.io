@@ -1,0 +1,127 @@
+<div id="glowscript" class="glowscript" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://s3.amazonaws.com/glowscript/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+<link type="text/css" href="https://s3.amazonaws.com/glowscript/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/glow.2.9.min.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/RSrun.2.9.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var RS_modules = {};
+RS_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = RS_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var RS_Iter0 = string_funcs;
+        RS_Iter0 = ((typeof RS_Iter0[Symbol.iterator] === "function") ? (RS_Iter0 instanceof Map ? RS_Iter0.keys() : RS_Iter0) : Object.keys(RS_Iter0));
+        for (var RS_Index0 of RS_Iter0) {
+            name = RS_Index0;
+            (RS_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name] = (RS_expr_temp = RS_str.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name];
+        }
+    };
+
+    RS_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+    var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, N, boxes, L, RS_unpack, length, height, b, z, y, x, a;
+    version = RS_list_decorate([ "2.9", "glowscript" ]);
+    Array.prototype['+']=function(r) {return this.concat(r)}
+    Array.prototype['*']=function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    box = vp_box;
+    sphere = vp_sphere;
+    simple_sphere = vp_simple_sphere;
+    cylinder = vp_cylinder;
+    pyramid = vp_pyramid;
+    cone = vp_cone;
+    helix = vp_helix;
+    ellipsoid = vp_ellipsoid;
+    ring = vp_ring;
+    arrow = vp_arrow;
+    compound = vp_compound;
+    display = canvas;
+    vector = vec;
+    print = GSprint;
+    arange = range;
+    type = pytype;
+    scene = canvas();
+    var strings = RS_modules.pythonize.strings;
+
+    strings();
+    "3";
+    N = 15;
+    "4";
+    boxes = RS_list_decorate([]);
+    "5";
+    L = 10;
+    "6";
+    scene.range = L;
+    "7";
+    RS_unpack = [500, 300];
+    scene.width = RS_unpack[0];
+    scene.height = RS_unpack[1];
+    "8";
+    scene.background = color.white;
+    "9";
+    length = .5["*"](L)["/"](N);
+    "10";
+    height = .5["*"](L)["/"](N);
+    "12";
+    for (var RS_Index1 = 0; RS_Index1["<"](N); RS_Index1++) {
+        x = RS_Index1;
+        "13";
+        for (var RS_Index2 = 0; RS_Index2["<"](N); RS_Index2++) {
+            y = RS_Index2;
+            "14";
+            for (var RS_Index3 = 0; RS_Index3["<"](N); RS_Index3++) {
+                z = RS_Index3;
+                "15";
+                b = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({color: vector(x["/"](N), y["/"](N), z["/"](N)), pos: vector(L["*"](x["/"](N["-"](1))["-"](.5)), L["*"](y["/"](N["-"](1))["-"](.5)), L["*"](z["/"](N["-"](1))["-"](.5))), size: vector(length, height, length)})]);
+                "18";
+                boxes.append(b);
+            }
+        }
+    }
+    "22";
+    while (true) {
+        "23";
+        ;(await rate(200));
+        "24";
+        a = vec(random(), random(), random());
+        "25";
+        var RS_Iter4 = boxes;
+        RS_Iter4 = ((typeof RS_Iter4[Symbol.iterator] === "function") ? (RS_Iter4 instanceof Map ? RS_Iter4.keys() : RS_Iter4) : Object.keys(RS_Iter4));
+        for (var RS_Index4 of RS_Iter4) {
+            b = RS_Index4;
+            "26";
+            RS_interpolate_kwargs.call(b, b.rotate, [RS_desugar_kwargs({angle: .01, axis: a})]);
+        }
+    }
+};
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Eletric Potential and Field of a dipole</title>
+        <link rel="stylesheet" type="text/css" href="../style_code.css">
+        </script>
+    </head>
+    <body>
+        <div class='topnav'>
+            <a href='../index.html'>Home</a>
+            <a href='../about.html'>About</a>
+            <a href='https://www.glowscript.org/#/user/MorrisH/folder/MyPrograms/'>Glowscript</a>
+            <a href='https://github.com/MorrisHuang-skipper/VPython'>Code</a>
+        </div>
+        <div class='header'>Motion of a charge near a eletric dipole</div>
+        <center><iframe src="10_sim.html" frameborder="0" scrolling="no" width=1000 height=600></iframe></center>
+        <div class="row">
+            <div class="column side">
+                <br>
+            </div>    
+            <div class='column middle'>
+                --> The following code is about how to simulate charge motion near a dipole.<br>
+                --> You can also view the complete code here(<a href='10_full_code.html'>full code</a>).<br>
+                --> Below is the explanation of the code that divided into different section.<br><br>
+                --> Most of the function appear in this program is the same in <a href='9_code.html'>eletric field and potential of a dipole</a>, only add one extra funciton.<br>
+                --> First you need to import vpython.
+                <script src="https://gist.github.com/MorrisHuang-skipper/8149e9003eba539f4f406af14b7cddcf.js"></script><br>
+                --> Then setting some important parameter.
+                <script src="https://gist.github.com/MorrisHuang-skipper/3a61ff72cf498341d351359885dc1226.js"></script><br>
+                --> Now come to the main function which will be execute at the end. Only slightly different from <a href='9_code.html'>eletric field and potential of a dipole</a>.<br>
+                --> But only this time we don't calulate eletric potential, otherwise it will occpied too many memory.<br>
+                --> Create a free charge with initial position and velovity can be customize.<br>
+                --> Finally using function 'update' that will update the position of free charge.<br>
+                <script src="https://gist.github.com/MorrisHuang-skipper/bee34a0188f85317c2eaac9de7c9e808.js"></script><br>
+                --> This is the only function that been added in this program from <a href='9_code.html'>this program</a>.<br>
+                --> This function takes two input: one is free charge and the other is a list of dipole(or other sorce of eletric field). Use these two input to calculate the force that exert on free charge, and the accelaration of free charge.<br>
+                <script src="https://gist.github.com/MorrisHuang-skipper/f9830295b7a50406dfcddf75fcd10560.js"></script><br>
+                --> Finally execute the main function.
+                <script src="https://gist.github.com/MorrisHuang-skipper/0d3bb621c1d3ed27240f898f0bdc0586.js"></script><br> 
+                
+            
+            </div>
+        </div>
+    </body>
+</html>
