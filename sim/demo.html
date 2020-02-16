@@ -1,4 +1,4 @@
-<div id="glowscript" class="glowscript" >
+<div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://s3.amazonaws.com/glowscript/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
@@ -44,7 +44,7 @@ RS_modules.pythonize = {};
     RS_modules.pythonize.strings = strings;
 })();
 async function __main__() {
-    var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, N, boxes, L, RS_unpack, length, height, b, z, y, x, a;
+    var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, k, ec, radius, dt, m;
     version = RS_list_decorate([ "2.9", "glowscript" ]);
     Array.prototype['+']=function(r) {return this.concat(r)}
     Array.prototype['*']=function(r) {return __array_times_number(this, r)}
@@ -69,55 +69,128 @@ async function __main__() {
     var strings = RS_modules.pythonize.strings;
 
     strings();
-    "3";
-    N = 15;
-    "4";
-    boxes = RS_list_decorate([]);
-    "5";
-    L = 10;
     "6";
-    scene.range = L;
+    k = 9e9;
     "7";
-    RS_unpack = [500, 300];
-    scene.width = RS_unpack[0];
-    scene.height = RS_unpack[1];
+    ec = 1.6e-19;
     "8";
-    scene.background = color.white;
+    radius = 1.2e-14;
     "9";
-    length = .5["*"](L)["/"](N);
+    dt = .001;
     "10";
-    height = .5["*"](L)["/"](N);
+    m = 1.6e-31;
     "12";
-    for (var RS_Index1 = 0; RS_Index1["<"](N); RS_Index1++) {
-        x = RS_Index1;
-        "13";
-        for (var RS_Index2 = 0; RS_Index2["<"](N); RS_Index2++) {
-            y = RS_Index2;
-            "14";
-            for (var RS_Index3 = 0; RS_Index3["<"](N); RS_Index3++) {
-                z = RS_Index3;
-                "15";
-                b = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({color: vector(x["/"](N), y["/"](N), z["/"](N)), pos: vector(L["*"](x["/"](N["-"](1))["-"](.5)), L["*"](y["/"](N["-"](1))["-"](.5)), L["*"](z["/"](N["-"](1))["-"](.5))), size: vector(length, height, length)})]);
-                "18";
-                boxes.append(b);
+    async function main() {
+        var RS_ls, scene, proton, electrons, x, y, z, dis, RS_unpack, dx, dy, dz, electron, vx, vy, vz, r, g, b, i;
+        "15";
+        scene = RS_interpolate_kwargs.call(this, canvas, [RS_desugar_kwargs({width: 1e3, height: 400, range: 5e-13, usepan: false, userzoom: false})]);
+        "17";
+        scene.background = color.white;
+        "19";
+        proton = (await charge(vec(0, 0, 0), ec));
+        "20";
+        proton.radius = 3["*"](radius);
+        "23";
+        electrons = RS_list_decorate([]);
+        "24";
+        for (var RS_Index1 = 0; RS_Index1["<"](60); RS_Index1++) {
+            i = RS_Index1;
+            "25";
+            x = (random()[">"](.5)) ? random() : random()["-u"]();
+            "26";
+            y = (random()[">"](.5)) ? random() : random()["-u"]();
+            "27";
+            z = (random()[">"](.5)) ? random() : random()["-u"]();
+            "28";
+            dis = GS_power((GS_power(x, 2)["+"](GS_power(y, 2))["+"](GS_power(z, 2))), .5);
+            "29";
+            RS_unpack = [x["/"](dis), y["/"](dis), z["/"](dis)];
+            x = RS_unpack[0];
+            y = RS_unpack[1];
+            z = RS_unpack[2];
+            "30";
+            RS_unpack = [random()["*"](100), random()["*"](100), random()["*"](100)];
+            dx = RS_unpack[0];
+            dy = RS_unpack[1];
+            dz = RS_unpack[2];
+            "31";
+            electron = (await charge(vec(x["*"](radius)["*"](dx), y["*"](radius)["*"](dy), z["*"](radius)["*"](dz)), 1e-41["-u"]()["*"](ec)));
+            "32";
+            vx = (random()[">"](.5)) ? random() : random()["-u"]();
+            "33";
+            vy = (random()[">"](.5)) ? random() : random()["-u"]();
+            "34";
+            vz = (random()[">"](.5)) ? random() : random()["-u"]();
+            "35";
+            RS_unpack = [random(), random(), random()];
+            r = RS_unpack[0];
+            g = RS_unpack[1];
+            b = RS_unpack[2];
+            "36";
+            electron.v = 1e-13["*"](vec(vx, vy, vz));
+            "37";
+            electron.color = vec(r, g, b);
+            "38";
+            electron.trail_color = vec(r, g, b);
+            "39";
+            electrons.append(electron);
+        }
+        "40";
+        while (true) {
+            "41";
+            ;(await rate(1["/"](dt)));
+            "42";
+            ;(await update(proton, electrons));
+        }
+    };
+
+    "44";
+    async function charge(pos, coulomb) {
+        "49";
+        return RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: pos, radius: radius, C: coulomb, color: (coulomb[">"](0)) ? color.blue : color.red, make_trail: true, type: points, retain: 100})]);
+    };
+    if (!charge.__argnames__) Object.defineProperties(charge, {
+        __argnames__ : {value: ["pos", "coulomb"]}
+    });
+
+    "53";
+    async function update(source, electrons) {
+        var RS_ls, E, a, electron;
+        "58";
+        var RS_Iter2 = electrons;
+        RS_Iter2 = ((typeof RS_Iter2[Symbol.iterator] === "function") ? (RS_Iter2 instanceof Map ? RS_Iter2.keys() : RS_Iter2) : Object.keys(RS_Iter2));
+        for (var RS_Index2 of RS_Iter2) {
+            electron = RS_Index2;
+            "60";
+            E = vec(0, 0, 0);
+            "61";
+            try {
+                "63";
+                E = k["*"](source.C)["*"](electron.pos["-"](source.pos))["/"](GS_power(mag(electron.pos["-"](source.pos)), 3));
+                "64";
+                a = electron.C["*"](E)["/"](m);
+                "65";
+                electron.v=electron.v["+"](a["*"](dt));
+                "66";
+                electron.pos=electron.pos["+"](electron.v["*"](dt));
+                "67";
+            } catch (RS_Exception) {
+                RS_last_exception = RS_Exception;
+                if (RS_Exception instanceof ZeroDivisionError) {
+                    "69";
+                    electron.v = 0;
+                } else {
+                    throw RS_Exception;
+                }
             }
         }
-    }
-    "22";
-    while (true) {
-        "23";
-        ;(await rate(200));
-        "24";
-        a = vec(random(), random(), random());
-        "25";
-        var RS_Iter4 = boxes;
-        RS_Iter4 = ((typeof RS_Iter4[Symbol.iterator] === "function") ? (RS_Iter4 instanceof Map ? RS_Iter4.keys() : RS_Iter4) : Object.keys(RS_Iter4));
-        for (var RS_Index4 of RS_Iter4) {
-            b = RS_Index4;
-            "26";
-            RS_interpolate_kwargs.call(b, b.rotate, [RS_desugar_kwargs({angle: .01, axis: a})]);
-        }
-    }
+    };
+    if (!update.__argnames__) Object.defineProperties(update, {
+        __argnames__ : {value: ["source", "electrons"]}
+    });
+
+    "71";
+    ;(await main());
 };
 
 ;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
@@ -125,3 +198,10 @@ async function __main__() {
 
 //--><!]]></script>
 </div>
+<html>
+    <head>
+    </head>
+    <body style="background-color:white;">
+    
+    </body>
+</html>
