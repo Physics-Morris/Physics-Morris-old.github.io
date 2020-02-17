@@ -692,7 +692,7 @@
                 "alt": "",
                 "title": "",
                 "customStyle1": "display-7",
-                "caption": "Chaotic Electrons",
+                "caption": "",
                 "active": false
               },
               {
@@ -705,7 +705,7 @@
                 "alt": "",
                 "title": "",
                 "customStyle1": "display-7",
-                "caption": "",
+                "caption": "Chaotic Electrons",
                 "active": false
               },
               {
@@ -718,7 +718,7 @@
                 "alt": "",
                 "title": "",
                 "customStyle1": "display-7",
-                "caption": "Dipole Potential",
+                "caption": "",
                 "active": false
               },
               {
