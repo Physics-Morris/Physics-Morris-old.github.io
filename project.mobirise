@@ -1,6 +1,6 @@
 {
   "settings": {
-    "name": "My Site",
+    "name": "PhysSim",
     "currentPage": "index.html",
     "theme": {
       "name": "mobirise4",
@@ -41,7 +41,14 @@
     "uniqCompNum": 40,
     "versionPublish": "4.12.1",
     "imageResize": true,
-    "screenshot": "screenshot.png"
+    "screenshot": "screenshot.png",
+    "favicon": false,
+    "robotsSwitcher": false,
+    "sitemapSwitcher": false,
+    "sitemapSwitcherAuto": false,
+    "siteUrl": false,
+    "cookiesAlert": false,
+    "gdpr": false
   },
   "pages": {
     "index.html": {
@@ -673,10 +680,49 @@
                 "title": "",
                 "customStyle1": "display-7",
                 "caption": "Field And Potential Of A Dipole",
+                "active": true
+              },
+              {
+                "tags": "酷毙",
+                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
+                "playVideo": false,
+                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
+                "image": "@PROJECT_PATH@/assets/images/black-1247x749.png",
+                "thumb": "@PROJECT_PATH@/assets/images/black-1247x749-800x481.png",
+                "alt": "",
+                "title": "",
+                "customStyle1": "display-7",
+                "caption": "Chaotic Electrons",
                 "active": false
               },
               {
                 "tags": "酷毙",
+                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
+                "playVideo": false,
+                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
+                "image": "@PROJECT_PATH@/assets/images/chaotic-1373x823.png",
+                "thumb": "@PROJECT_PATH@/assets/images/chaotic-1373x823-800x480.png",
+                "alt": "",
+                "title": "",
+                "customStyle1": "display-7",
+                "caption": "",
+                "active": false
+              },
+              {
+                "tags": "酷毙",
+                "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
+                "playVideo": false,
+                "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
+                "image": "@PROJECT_PATH@/assets/images/black-1247x749.png",
+                "thumb": "@PROJECT_PATH@/assets/images/black-1247x749-800x481.png",
+                "alt": "",
+                "title": "",
+                "customStyle1": "display-7",
+                "caption": "Dipole Potential",
+                "active": false
+              },
+              {
+                "tags": "动画",
                 "videoPreview": "@THEME_PATH@/components/_images/gallery/preview.jpg",
                 "playVideo": false,
                 "videoUrl": "https://www.youtube.com/watch?v=fwkKc6M60-0",
@@ -685,8 +731,8 @@
                 "alt": "",
                 "title": "",
                 "customStyle1": "display-7",
-                "caption": "Wedge",
-                "active": true
+                "caption": "Field And Potential Of A Dipole",
+                "active": false
               }
             ]
           }
