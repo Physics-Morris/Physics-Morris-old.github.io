@@ -83,101 +83,99 @@ async function __main__() {
     async function main() {
         var RS_ls, scene, proton, electrons, x, y, z, dis, RS_unpack, dx, dy, dz, electron, vx, vy, vz, r, g, b, i;
         "15";
-        scene = RS_interpolate_kwargs.call(this, canvas, [RS_desugar_kwargs({width: 1e3, height: 400, range: 5e-13, usepan: false, userzoom: false})]);
-        "17";
-        scene.background = color.white;
-        "19";
+        scene = RS_interpolate_kwargs.call(this, canvas, [RS_desugar_kwargs({width: 1e3, height: 600, range: 5e-13, usepan: false, userzoom: false})]);
+        "18";
         proton = (await charge(vec(0, 0, 0), ec));
-        "20";
+        "19";
         proton.radius = 3["*"](radius);
-        "23";
+        "22";
         electrons = RS_list_decorate([]);
-        "24";
-        for (var RS_Index1 = 0; RS_Index1["<"](15); RS_Index1++) {
+        "23";
+        for (var RS_Index1 = 0; RS_Index1["<"](60); RS_Index1++) {
             i = RS_Index1;
-            "25";
+            "24";
             x = (random()[">"](.5)) ? random() : random()["-u"]();
-            "26";
+            "25";
             y = (random()[">"](.5)) ? random() : random()["-u"]();
-            "27";
+            "26";
             z = (random()[">"](.5)) ? random() : random()["-u"]();
-            "28";
+            "27";
             dis = GS_power((GS_power(x, 2)["+"](GS_power(y, 2))["+"](GS_power(z, 2))), .5);
-            "29";
+            "28";
             RS_unpack = [x["/"](dis), y["/"](dis), z["/"](dis)];
             x = RS_unpack[0];
             y = RS_unpack[1];
             z = RS_unpack[2];
-            "30";
+            "29";
             RS_unpack = [random()["*"](100), random()["*"](100), random()["*"](100)];
             dx = RS_unpack[0];
             dy = RS_unpack[1];
             dz = RS_unpack[2];
-            "31";
+            "30";
             electron = (await charge(vec(x["*"](radius)["*"](dx), y["*"](radius)["*"](dy), z["*"](radius)["*"](dz)), 1e-41["-u"]()["*"](ec)));
-            "32";
+            "31";
             vx = (random()[">"](.5)) ? random() : random()["-u"]();
-            "33";
+            "32";
             vy = (random()[">"](.5)) ? random() : random()["-u"]();
-            "34";
+            "33";
             vz = (random()[">"](.5)) ? random() : random()["-u"]();
-            "35";
+            "34";
             RS_unpack = [random(), random(), random()];
             r = RS_unpack[0];
             g = RS_unpack[1];
             b = RS_unpack[2];
-            "36";
+            "35";
             electron.v = 1e-13["*"](vec(vx, vy, vz));
-            "37";
+            "36";
             electron.color = vec(r, g, b);
-            "38";
+            "37";
             electron.trail_color = vec(r, g, b);
-            "39";
+            "38";
             electrons.append(electron);
         }
-        "40";
+        "39";
         while (true) {
-            "41";
+            "40";
             ;(await rate(1["/"](dt)));
-            "42";
+            "41";
             ;(await update(proton, electrons));
         }
     };
 
-    "44";
+    "43";
     async function charge(pos, coulomb) {
-        "49";
+        "48";
         return RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: pos, radius: radius, C: coulomb, color: (coulomb[">"](0)) ? color.blue : color.red, make_trail: true, type: points, retain: 100})]);
     };
     if (!charge.__argnames__) Object.defineProperties(charge, {
         __argnames__ : {value: ["pos", "coulomb"]}
     });
 
-    "53";
+    "52";
     async function update(source, electrons) {
         var RS_ls, E, a, electron;
-        "58";
+        "57";
         var RS_Iter2 = electrons;
         RS_Iter2 = ((typeof RS_Iter2[Symbol.iterator] === "function") ? (RS_Iter2 instanceof Map ? RS_Iter2.keys() : RS_Iter2) : Object.keys(RS_Iter2));
         for (var RS_Index2 of RS_Iter2) {
             electron = RS_Index2;
-            "60";
+            "59";
             E = vec(0, 0, 0);
-            "61";
+            "60";
             try {
-                "63";
+                "62";
                 E = k["*"](source.C)["*"](electron.pos["-"](source.pos))["/"](GS_power(mag(electron.pos["-"](source.pos)), 3));
-                "64";
+                "63";
                 a = electron.C["*"](E)["/"](m);
-                "65";
+                "64";
                 electron.v=electron.v["+"](a["*"](dt));
-                "66";
+                "65";
                 electron.pos=electron.pos["+"](electron.v["*"](dt));
-                "67";
+                "66";
             } catch (RS_Exception) {
                 RS_last_exception = RS_Exception;
                 if (RS_Exception instanceof ZeroDivisionError) {
-                    "69";
+                    "68";
                     electron.v = 0;
                 } else {
                     throw RS_Exception;
@@ -189,7 +187,7 @@ async function __main__() {
         __argnames__ : {value: ["source", "electrons"]}
     });
 
-    "71";
+    "70";
     ;(await main());
 };
 
