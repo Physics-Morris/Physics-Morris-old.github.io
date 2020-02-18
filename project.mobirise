@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "PhysSim",
-    "currentPage": "simulations.html",
+    "currentPage": "random_code.html",
     "theme": {
       "name": "mobirise4",
       "title": "Mobirise 4",
@@ -38,7 +38,7 @@
       }
     ],
     "versionFirst": "4.7.6",
-    "uniqCompNum": 81,
+    "uniqCompNum": 82,
     "versionPublish": "4.12.1",
     "imageResize": true,
     "screenshot": "screenshot.png",
