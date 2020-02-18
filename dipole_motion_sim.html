@@ -5,31 +5,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Mobirise v4.12.1, mobirise.com">
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:image:src" content="assets/images/index-meta.png">
-  <meta property="og:image" content="assets/images/index-meta.png">
-  <meta name="twitter:title" content="PhysSim">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/ncu-122x108.png" type="image/x-icon">
-  <meta name="description" content="">
+  <meta name="description" content="Web Maker Description">
   
+  <title>dipole_motion_sim</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/facebook-plugin/style.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/style.css">
-  <link rel="stylesheet" href="assets/slick.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/gallery/style.css">
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  <title>Eletric Potential and Field of a dipole</title>
-  <link rel="stylesheet" type="text/css" href="style_code.css">
+  
+  
+  
 </head>
 <body>
-  <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0">
+    <br><br><br><br><br>
+  <section class="menu cid-rQPphD6p2u" once="menu" id="menu1-23">
 
     
 
@@ -55,52 +51,417 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="index.html">
-                        <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
+                    <a class="nav-link link text-white display-4" href="index.html" aria-expanded="false"><span class="mbri-home mbr-iconfont mbr-iconfont-btn" style="color: rgb(204, 41, 82);"></span>
+                        
                         Home<br></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="about.html"><span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>
+                <li class="nav-item"><a class="nav-link link text-white display-4" href="about.html"><span class="mbri-info mbr-iconfont mbr-iconfont-btn" style="color: rgb(204, 41, 82);"></span>
                         
-                        About</a>
-                </li></ul>
+                        About</a></li></ul>
             <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="simulations.html">
                     
                     Simulations</a></div>
         </div>
     </nav>
 </section>
-    
 
+
+  <section class="engine"><a href="https://mobirise.info/n">free simple site templates</a></section><script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5"></script>
+  <script src="https://apis.google.com/js/plusone.js"></script>
+  <script src="assets/facebook-plugin/facebook-script.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <div id="glowscript" class="glowscript">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" href="https://s3.amazonaws.com/glowscript/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="https://s3.amazonaws.com/glowscript/css/ide.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/glow.2.9.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/RSrun.2.9.min.js"></script>
+    <script type="text/javascript"><!--//--><![CDATA[//><!--
     
-<div class='header'>Motion of a charge near a eletric dipole</div>
-        <center><iframe src="10_sim.html" frameborder="0" scrolling="no" width=1000 height=600></iframe></center>
-        <div class="row">
-            <div class="column side">
-                <br>
-            </div>    
-            <div class='column middle'>
-                --> The following code is about how to simulate charge motion near a dipole.<br>
-                --> You can also view the complete code here(<a href='10_full_code.html'>full code</a>).<br>
-                --> Below is the explanation of the code that divided into different section.<br><br>
-                --> Most of the function appear in this program is the same in <a href='9_code.html'>eletric field and potential of a dipole</a>, only add one extra funciton.<br>
-                --> First you need to import vpython.
-                <script src="https://gist.github.com/MorrisHuang-skipper/8149e9003eba539f4f406af14b7cddcf.js"></script><br>
-                --> Then setting some important parameter.
-                <script src="https://gist.github.com/MorrisHuang-skipper/3a61ff72cf498341d351359885dc1226.js"></script><br>
-                --> Now come to the main function which will be execute at the end. Only slightly different from <a href='9_code.html'>eletric field and potential of a dipole</a>.<br>
-                --> But only this time we don't calulate eletric potential, otherwise it will occpied too many memory.<br>
-                --> Create a free charge with initial position and velovity can be customize.<br>
-                --> Finally using function 'update' that will update the position of free charge.<br>
-                <script src="https://gist.github.com/MorrisHuang-skipper/bee34a0188f85317c2eaac9de7c9e808.js"></script><br>
-                --> This is the only function that been added in this program from <a href='9_code.html'>this program</a>.<br>
-                --> This function takes two input: one is free charge and the other is a list of dipole(or other sorce of eletric field). Use these two input to calculate the force that exert on free charge, and the accelaration of free charge.<br>
-                <script src="https://gist.github.com/MorrisHuang-skipper/f9830295b7a50406dfcddf75fcd10560.js"></script><br>
-                --> Finally execute the main function.
-                <script src="https://gist.github.com/MorrisHuang-skipper/0d3bb621c1d3ed27240f898f0bdc0586.js"></script><br> 
-                
-            
-            </div>
-        </div>
-    </body>
+    // START JAVASCRIPT
+    ;(function() {;
+    var RS_modules = {};
+    RS_modules.pythonize = {};
+    
+    (function(){
+        function strings() {
+            var string_funcs, exclude, name;
+            string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+            if (!arguments.length) {
+                exclude = (function(){
+                    var s = RS_set();
+                    s.jsset.add("split");
+                    s.jsset.add("replace");
+                    return s;
+                })();
+            } else if (arguments[0]) {
+                exclude = Array.prototype.slice.call(arguments);
+            } else {
+                exclude = null;
+            }
+            if (exclude) {
+                string_funcs = string_funcs.difference(set(exclude));
+            }
+            var RS_Iter0 = string_funcs;
+            RS_Iter0 = ((typeof RS_Iter0[Symbol.iterator] === "function") ? (RS_Iter0 instanceof Map ? RS_Iter0.keys() : RS_Iter0) : Object.keys(RS_Iter0));
+            for (var RS_Index0 of RS_Iter0) {
+                name = RS_Index0;
+                (RS_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name] = (RS_expr_temp = RS_str.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name];
+            }
+        };
+    
+        RS_modules.pythonize.strings = strings;
+    })();
+    async function __main__() {
+        var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, k, ec, radius, arrow_length, shaftwidth, dt, m, v0, p0;
+        version = RS_list_decorate([ "2.9", "glowscript" ]);
+        Array.prototype['+']=function(r) {return this.concat(r)}
+        Array.prototype['*']=function(r) {return __array_times_number(this, r)}
+        window.__GSlang = "vpython";
+        box = vp_box;
+        sphere = vp_sphere;
+        simple_sphere = vp_simple_sphere;
+        cylinder = vp_cylinder;
+        pyramid = vp_pyramid;
+        cone = vp_cone;
+        helix = vp_helix;
+        ellipsoid = vp_ellipsoid;
+        ring = vp_ring;
+        arrow = vp_arrow;
+        compound = vp_compound;
+        display = canvas;
+        vector = vec;
+        print = GSprint;
+        arange = range;
+        type = pytype;
+        scene = canvas();
+        var strings = RS_modules.pythonize.strings;
+    
+        strings();
+        "7";
+        k = 9e9;
+        "8";
+        ec = 1.6e-19;
+        "9";
+        radius = 1.2e-14;
+        "10";
+        arrow_length = 1e-14;
+        "11";
+        shaftwidth = 1e-15;
+        "12";
+        dt = .01;
+        "13";
+        m = 1.6e-31;
+        "14";
+        v0 = vec(radius, 0, 0);
+        "15";
+        p0 = vec(0, 10["*"](radius), 0);
+        "17";
+        async function main() {
+            var RS_ls, scene, dipole, free_charge;
+            "20";
+            scene = RS_interpolate_kwargs.call(this, canvas, [RS_desugar_kwargs({width: 1e3, height: 600, range: 2e-13, userspin: false, userpan: false, userzoom: false})]);
+            "24";
+            scene.lights[0].direction = vec(0, .88, .88);
+            "25";
+            scene.lights[1].direction = vec(0, .88["-u"](), .88["-u"]());
+            "28";
+            dipole = RS_list_decorate([ (await charge(vec(10["-u"]()["*"](radius), 0, 0), ec["-u"]())), (await charge(vec(10["*"](radius), 0, 0), ec)) ]);
+            "35";
+            ;(await show_field(dipole, scene.range["*"](1.8)));
+            "38";
+            free_charge = (await charge(p0, 1e-42["*"](ec)));
+            "39";
+            free_charge.v = v0;
+            "40";
+            while (true) {
+                "41";
+                ;(await rate(1["/"](dt)));
+                "44";
+                ;(await update(dipole, free_charge));
+            }
+        };
+    
+        "46";
+        async function charge(pos, coulomb) {
+            "51";
+            return RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: pos, radius: radius, C: coulomb, color: (coulomb[">"](0)) ? color.blue : color.red, make_trail: true})]);
+        };
+        if (!charge.__argnames__) Object.defineProperties(charge, {
+            __argnames__ : {value: ["pos", "coulomb"]}
+        });
+    
+        "55";
+        async function show_field(charges, range) {
+            var RS_ls, RS_unpack, pos, E, charge, color, x, y;
+            "61";
+            var RS_Iter1 = (await meshgrid(range, range));
+            RS_Iter1 = ((typeof RS_Iter1[Symbol.iterator] === "function") ? (RS_Iter1 instanceof Map ? RS_Iter1.keys() : RS_Iter1) : Object.keys(RS_Iter1));
+            for (var RS_Index1 of RS_Iter1) {
+                RS_unpack = RS_Index1;
+                x = RS_unpack[0];
+                y = RS_unpack[1];
+                "62";
+                RS_unpack = [vec(x, y, 0), vec(0, 0, 0)];
+                pos = RS_unpack[0];
+                E = RS_unpack[1];
+                "64";
+                try {
+                    "66";
+                    var RS_Iter2 = charges;
+                    RS_Iter2 = ((typeof RS_Iter2[Symbol.iterator] === "function") ? (RS_Iter2 instanceof Map ? RS_Iter2.keys() : RS_Iter2) : Object.keys(RS_Iter2));
+                    for (var RS_Index2 of RS_Iter2) {
+                        charge = RS_Index2;
+                        "67";
+                        E=E["+"](k["*"](charge.C)["*"](pos["-"](charge.pos))["/"](GS_power(mag(pos["-"](charge.pos)), 3)));
+                    }
+                    "70";
+                    color = vec(1, (await field_norm(mag(E))), 0);
+                    "73";
+                    RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: pos, axis: hat(E)["*"](arrow_length), color: color, shaftwidth: shaftwidth})]);
+                    "75";
+                } catch (RS_Exception) {
+                    RS_last_exception = RS_Exception;
+                    if (RS_Exception instanceof ZeroDivisionError) {
+                        "77";
+                        print("Electric field is infinity at the susrface of the charge");
+                    } else {
+                        throw RS_Exception;
+                    }
+                }
+            }
+        };
+        if (!show_field.__argnames__) Object.defineProperties(show_field, {
+            __argnames__ : {value: ["charges", "range"]}
+        });
+    
+        "80";
+        async function show_potential(charges, range) {
+            var RS_ls, RS_unpack, pos, V, charge, color, x, y;
+            "86";
+            var RS_Iter3 = (await meshgrid(range, range, .5["*"](radius)));
+            RS_Iter3 = ((typeof RS_Iter3[Symbol.iterator] === "function") ? (RS_Iter3 instanceof Map ? RS_Iter3.keys() : RS_Iter3) : Object.keys(RS_Iter3));
+            for (var RS_Index3 of RS_Iter3) {
+                RS_unpack = RS_Index3;
+                x = RS_unpack[0];
+                y = RS_unpack[1];
+                "87";
+                RS_unpack = [vec(x, y, 0), 0];
+                pos = RS_unpack[0];
+                V = RS_unpack[1];
+                "89";
+                try {
+                    "91";
+                    var RS_Iter4 = charges;
+                    RS_Iter4 = ((typeof RS_Iter4[Symbol.iterator] === "function") ? (RS_Iter4 instanceof Map ? RS_Iter4.keys() : RS_Iter4) : Object.keys(RS_Iter4));
+                    for (var RS_Index4 of RS_Iter4) {
+                        charge = RS_Index4;
+                        "92";
+                        V=V["+"](k["*"](charge.C)["/"](mag(pos["-"](charge.pos))));
+                        "95";
+                    }
+                    if (V[">"](0)) {
+                        color = vec(0, 0, (await potential_norm(V)));
+                    } else {
+                        color = vec((await potential_norm(V)), 0, 0);
+                    }
+                    "99";
+                    ;(await create_quad(pos, color));
+                    "101";
+                } catch (RS_Exception) {
+                    RS_last_exception = RS_Exception;
+                    if (RS_Exception instanceof ZeroDivisionError) {
+                        "103";
+                        print("Electric field is infinity at the susrface of the charge");
+                    } else {
+                        throw RS_Exception;
+                    }
+                }
+            }
+        };
+        if (!show_potential.__argnames__) Object.defineProperties(show_potential, {
+            __argnames__ : {value: ["charges", "range"]}
+        });
+    
+        "106";
+        async function field_norm(value) {
+            var RS_ls, a;
+            "111";
+            a = 1e-17;
+            "112";
+            return 1["-"](log(a["*"](value)));
+        };
+        if (!field_norm.__argnames__) Object.defineProperties(field_norm, {
+            __argnames__ : {value: ["value"]}
+        });
+    
+        "115";
+        async function potential_norm(value) {
+            var RS_ls, b;
+            "120";
+            b = 3e-4;
+            "122";
+            try {
+                "123";
+                return log(b["*"](abs(value)));
+                "124";
+            } catch (RS_Exception) {
+                RS_last_exception = RS_Exception;
+                if (RS_Exception instanceof ValueError) {
+                    "125";
+                    return 0;
+                } else {
+                    throw RS_Exception;
+                }
+            }
+        };
+        if (!potential_norm.__argnames__) Object.defineProperties(potential_norm, {
+            __argnames__ : {value: ["value"]}
+        });
+    
+        "127";
+        async function create_quad(pos, color) {
+            "132";
+            RS_interpolate_kwargs.call(this, quad, [RS_desugar_kwargs({vs: RS_list_decorate([ RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: pos["-"](vec(.25["*"](radius), .25["*"](radius), 0)), color: color, opacity: .6})]), RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: pos["-"](vec(.25["*"](radius), .25["-u"]()["*"](radius), 0)), color: color, opacity: .6})]), RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: pos["-"](vec(.25["-u"]()["*"](radius), .25["-u"]()["*"](radius), 0)), color: color, opacity: .6})]), RS_interpolate_kwargs.call(this, vertex, [RS_desugar_kwargs({pos: pos["-"](vec(.25["-u"]()["*"](radius), .25["*"](radius), 0)), color: color, opacity: .6})]) ])})]);
+        };
+        if (!create_quad.__argnames__) Object.defineProperties(create_quad, {
+            __argnames__ : {value: ["pos", "color"]}
+        });
+    
+        "138";
+        async function meshgrid() {
+            var xrange = ( 0 === arguments.length["-"](1) && arguments[arguments.length["-"](1)] !== null && typeof arguments[arguments.length["-"](1)] === "object" && arguments[arguments.length["-"](1)] [RS_kwargs_symbol] === true) ? undefined : arguments[0];
+            var yrange = ( 1 === arguments.length["-"](1) && arguments[arguments.length["-"](1)] !== null && typeof arguments[arguments.length["-"](1)] === "object" && arguments[arguments.length["-"](1)] [RS_kwargs_symbol] === true) ? undefined : arguments[1];
+            var step = (arguments[2] === undefined || ( 2 === arguments.length["-"](1) && arguments[arguments.length["-"](1)] !== null && typeof arguments[arguments.length["-"](1)] === "object" && arguments[arguments.length["-"](1)] [RS_kwargs_symbol] === true)) ? meshgrid.__defaults__.step : arguments[2];
+            var RS_kwargs_obj = arguments[arguments.length["-"](1)];
+            if (RS_kwargs_obj === null || typeof RS_kwargs_obj !== "object" || RS_kwargs_obj [RS_kwargs_symbol] !== true) RS_kwargs_obj = {};
+            if (Object.prototype.hasOwnProperty.call(RS_kwargs_obj, "step")){
+                step = RS_kwargs_obj.step;
+            }
+            var RS_ls, grid, y, x;
+            "143";
+            grid = RS_list_decorate([]);
+            "144";
+            var RS_Iter5 = (await frange(xrange["-u"](), xrange, step));
+            RS_Iter5 = ((typeof RS_Iter5[Symbol.iterator] === "function") ? (RS_Iter5 instanceof Map ? RS_Iter5.keys() : RS_Iter5) : Object.keys(RS_Iter5));
+            for (var RS_Index5 of RS_Iter5) {
+                x = RS_Index5;
+                "145";
+                var RS_Iter6 = (await frange(yrange["-u"](), yrange, step));
+                RS_Iter6 = ((typeof RS_Iter6[Symbol.iterator] === "function") ? (RS_Iter6 instanceof Map ? RS_Iter6.keys() : RS_Iter6) : Object.keys(RS_Iter6));
+                for (var RS_Index6 of RS_Iter6) {
+                    y = RS_Index6;
+                    "146";
+                    grid.append(RS_list_decorate([ x, y ]));
+                }
+            }
+            "147";
+            return grid;
+        };
+        if (!meshgrid.__defaults__) Object.defineProperties(meshgrid, {
+            __defaults__ : {value: {step:radius}},
+            __handles_kwarg_interpolation__ : {value: true},
+            __argnames__ : {value: ["xrange", "yrange", "step"]}
+        });
+    
+        "149";
+        async function frange() {
+            var start = ( 0 === arguments.length["-"](1) && arguments[arguments.length["-"](1)] !== null && typeof arguments[arguments.length["-"](1)] === "object" && arguments[arguments.length["-"](1)] [RS_kwargs_symbol] === true) ? undefined : arguments[0];
+            var stop = ( 1 === arguments.length["-"](1) && arguments[arguments.length["-"](1)] !== null && typeof arguments[arguments.length["-"](1)] === "object" && arguments[arguments.length["-"](1)] [RS_kwargs_symbol] === true) ? undefined : arguments[1];
+            var step = (arguments[2] === undefined || ( 2 === arguments.length["-"](1) && arguments[arguments.length["-"](1)] !== null && typeof arguments[arguments.length["-"](1)] === "object" && arguments[arguments.length["-"](1)] [RS_kwargs_symbol] === true)) ? frange.__defaults__.step : arguments[2];
+            var RS_kwargs_obj = arguments[arguments.length["-"](1)];
+            if (RS_kwargs_obj === null || typeof RS_kwargs_obj !== "object" || RS_kwargs_obj [RS_kwargs_symbol] !== true) RS_kwargs_obj = {};
+            if (Object.prototype.hasOwnProperty.call(RS_kwargs_obj, "step")){
+                step = RS_kwargs_obj.step;
+            }
+            var RS_ls, n;
+            "153";
+            n = int(round(stop["-"](start)["/"](float(step))));
+            "154";
+            if (n[">"](1)) {
+                "155";
+                return (function() {
+                    var RS_Iter = range(n["+"](1)), RS_Result = [], i;
+                    RS_Iter = ((typeof RS_Iter[Symbol.iterator] === "function") ? (RS_Iter instanceof Map ? RS_Iter.keys() : RS_Iter) : Object.keys(RS_Iter));
+                    for (var RS_Index of RS_Iter) {
+                        i = RS_Index;
+                        RS_Result.push(start["+"](step["*"](i)));
+                    }
+                    RS_Result = RS_list_constructor(RS_Result);
+                    return RS_Result;
+                })();
+                "156";
+            } else if ((n === 1 || typeof n === "object" && RS_equals(n, 1))) {
+                "157";
+                return RS_list_decorate([ start ]);
+                "158";
+            } else {
+                "159";
+                return RS_list_decorate([]);
+            }
+        };
+        if (!frange.__defaults__) Object.defineProperties(frange, {
+            __defaults__ : {value: {step:1}},
+            __handles_kwarg_interpolation__ : {value: true},
+            __argnames__ : {value: ["start", "stop", "step"]}
+        });
+    
+        "161";
+        async function update(source, obj) {
+            var RS_ls, E, charge, a;
+            "164";
+            E = vec(0, 0, 0);
+            "165";
+            try {
+                "167";
+                var RS_Iter7 = source;
+                RS_Iter7 = ((typeof RS_Iter7[Symbol.iterator] === "function") ? (RS_Iter7 instanceof Map ? RS_Iter7.keys() : RS_Iter7) : Object.keys(RS_Iter7));
+                for (var RS_Index7 of RS_Iter7) {
+                    charge = RS_Index7;
+                    "168";
+                    E=E["+"](k["*"](charge.C)["*"](obj.pos["-"](charge.pos))["/"](GS_power(mag(obj.pos["-"](charge.pos)), 3)));
+                }
+                "169";
+                a = obj.C["*"](E)["/"](m);
+                "170";
+                obj.v=obj.v["+"](a["*"](dt));
+                "171";
+                obj.pos=obj.pos["+"](obj.v["*"](dt));
+                "172";
+            } catch (RS_Exception) {
+                RS_last_exception = RS_Exception;
+                if (RS_Exception instanceof ZeroDivisionError) {
+                    "174";
+                    obj.v = 0;
+                } else {
+                    throw RS_Exception;
+                }
+            }
+        };
+        if (!update.__argnames__) Object.defineProperties(update, {
+            __argnames__ : {value: ["source", "obj"]}
+        });
+    
+        "177";
+        ;(await main());
+    };
+    
+    ;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+    // END JAVASCRIPT
+    
+    //--><!]]></script>
+    </div>
+  
+</body>
 </html>
