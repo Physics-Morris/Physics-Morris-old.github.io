@@ -1,0 +1,127 @@
+.header {
+    background-color: white;
+    text-align: center;
+    padding: 100px;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-style: italic;
+    font-size: 4vw;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: rgb(11, 104, 133);
+} 
+.topnav{
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow: hidden;
+    position: -webkit-sticky;
+    position:sticky;
+    top: 0;
+}
+.topnav a{
+    display: block;
+    color: white;
+    padding: 16px 16px;
+    text-decoration: none;
+    text-align: center;
+    float: left;
+    font-size: 2vw;
+}
+.topnav a:active{
+    background-color: #4CAF50;
+}
+.topnav a:hover{
+    background-color: #111;
+}
+
+.grid-container {
+display: grid;
+grid-template-areas: 
+  'header header header header header header' 
+  'left left middle middle right right' 
+  'footer footer footer footer footer footer';
+/* grid-column-gap: 10px; - if you want gap between the columns */
+} 
+
+.column {
+    float: left;
+  }
+  
+  /* Left and right column */
+  .column.side {
+    width: 20%;
+    font-size: 1.5vw;
+    line-height: 200%;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Middle column */
+  .column.middle {
+    width: 60%;
+    font-size: 1.5vw;
+    line-height: 200%;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+      width: 100%;
+    }
+  }
+
+.gist .blob-code-inner{ font-size:16px !important; }
+
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
+
+body .gist .gist-file {
+    margin-bottom: 0;
+    border: 1px  #adb5bd;
+    border-radius: 0;
+}
+
+body .gist .gist-data {
+    border-bottom: none;
+    border-radius: 0;
+    background-color: #f1f3f5;
+}
+
+body .gist .blob-wrapper {
+    border-radius: 0;
+}
+
+body .gist .highlight {
+    background-color: transparent;
+    font-family: 'Droid Sans Mono', monospace;
+    font-size: 14px;
+}
+
+body .gist .highlight td {
+    padding: 5px 15px !important;
+    line-height: 1;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+body .gist tr:first-child td {
+    padding-top: 15px !important;
+}
+
+body .gist tr:last-child td {
+    padding-bottom: 15px !important;
+}
+
+body .gist .blob-num {
+    color: #ced4da;
+    background-color: #495057;
+    pointer-events: none;
+}
+
+body .gist .gist-meta {
+    display: none;
+}
+
+
