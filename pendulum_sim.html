@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html  >
 <head>
+    <link rel="stylesheet" type="text/css" href="style_code.css">
   <!-- Site made with Mobirise Website Builder v4.12.1, https://mobirise.com -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,6 +25,7 @@
   
 </head>
 <body>
+    <br><br><br><br><br>
   <section class="menu cid-rQPobhhvzz" once="menu" id="menu1-1s">
 
     
@@ -65,7 +67,7 @@
 </section>
 
 
-  <section class="engine"><a href="https://mobirise.info/k">develop own website</a></section><script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <section class="engine"><a href="https://mobirise.info/m">free site design templates</a></section><script src="assets/web/assets/jquery/jquery.min.js"></script>
   <script src="assets/popper/popper.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5"></script>
@@ -78,6 +80,157 @@
   <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
   <script src="assets/theme/js/script.js"></script>
   
-  
+  <div id="glowscript" class="glowscript">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" href="https://s3.amazonaws.com/glowscript/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="https://s3.amazonaws.com/glowscript/css/ide.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/glow.2.9.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/glowscript/package/RSrun.2.9.min.js"></script>
+    <script type="text/javascript"><!--//--><![CDATA[//><!--
+    
+    // START JAVASCRIPT
+    ;(function() {;
+    var RS_modules = {};
+    RS_modules.pythonize = {};
+    
+    (function(){
+        function strings() {
+            var string_funcs, exclude, name;
+            string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+            if (!arguments.length) {
+                exclude = (function(){
+                    var s = RS_set();
+                    s.jsset.add("split");
+                    s.jsset.add("replace");
+                    return s;
+                })();
+            } else if (arguments[0]) {
+                exclude = Array.prototype.slice.call(arguments);
+            } else {
+                exclude = null;
+            }
+            if (exclude) {
+                string_funcs = string_funcs.difference(set(exclude));
+            }
+            var RS_Iter0 = string_funcs;
+            RS_Iter0 = ((typeof RS_Iter0[Symbol.iterator] === "function") ? (RS_Iter0 instanceof Map ? RS_Iter0.keys() : RS_Iter0) : Object.keys(RS_Iter0));
+            for (var RS_Index0 of RS_Iter0) {
+                name = RS_Index0;
+                (RS_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name] = (RS_expr_temp = RS_str.prototype)[(typeof name === "number" && name < 0) ? RS_expr_temp.length + name : name];
+            }
+        };
+    
+        RS_modules.pythonize.strings = strings;
+    })();
+    async function __main__() {
+        var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, RS_unpack, l, theta, m, g, out, celling, cyn, line, f1, w, sands, dt, t, I, alpha, sand;
+        version = RS_list_decorate([ "2.9", "glowscript" ]);
+        Array.prototype['+']=function(r) {return this.concat(r)}
+        Array.prototype['*']=function(r) {return __array_times_number(this, r)}
+        window.__GSlang = "vpython";
+        box = vp_box;
+        sphere = vp_sphere;
+        simple_sphere = vp_simple_sphere;
+        cylinder = vp_cylinder;
+        pyramid = vp_pyramid;
+        cone = vp_cone;
+        helix = vp_helix;
+        ellipsoid = vp_ellipsoid;
+        ring = vp_ring;
+        arrow = vp_arrow;
+        compound = vp_compound;
+        display = canvas;
+        vector = vec;
+        print = GSprint;
+        arange = range;
+        type = pytype;
+        scene = canvas();
+        var strings = RS_modules.pythonize.strings;
+    
+        strings();
+        "4";
+        RS_unpack = [20, pi["/"](4), 1.2, 9.8, .05];
+        l = RS_unpack[0];
+        theta = RS_unpack[1];
+        m = RS_unpack[2];
+        g = RS_unpack[3];
+        out = RS_unpack[4];
+        "6";
+        scene = RS_interpolate_kwargs.call(this, canvas, [RS_desugar_kwargs({width: 1e3, height: 600, align: "left"})]);
+        "7";
+        scene.range = 35;
+        "8";
+        celling = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vec(0, 0, 0), size: vec(30, 1, 30), color: color.blue})]);
+        "9";
+        cyn = RS_interpolate_kwargs.call(this, cylinder, [RS_desugar_kwargs({pos: vec(l["*"](sin(theta)), l["-u"]()["*"](cos(theta)), 0), axis: vec(0, 5["-u"](), 0), radius: 3, color: color.red, theta: pi["/"](4), omg: 0})]);
+        "11";
+        line = curve(cyn.pos, celling.pos);
+        "12";
+        f1 = RS_interpolate_kwargs.call(this, graph, [RS_desugar_kwargs({title: "<b>Angle<\/b>", xtitle: "<b>time</b>", ytitle: "<b>Angule</b>", align: "right", width: 500, height: 300})]);
+        "14";
+        w = RS_interpolate_kwargs.call(this, gdots, [RS_desugar_kwargs({graph: f1})]);
+        "16";
+        sands = RS_list_decorate([]);
+        "18";
+        async function sand_flow() {
+            var RS_ls, sand;
+            "19";
+            sand = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: cyn.pos["+"](vec(0, 5["-u"](), 0)), radius: .2, color: vec(random(), random(), random()), v: vec(0, 1["-u"](), 0)})]);
+            "21";
+            sands.append(sand);
+        };
+    
+        "23";
+        dt = .1;
+        "24";
+        t = 0;
+        "25";
+        while (true) {
+            "26";
+            ;(await rate(1["/"](dt)));
+            "27";
+            if (m[">="](.2)) {
+                "28";
+                ;(await sand_flow());
+                "29";
+                m = m["-"](out["*"](dt));
+            }
+            "30";
+            I = m["*"](GS_power(l, 2));
+            "31";
+            alpha = m["-u"]()["*"](g)["*"](l)["*"](sin(cyn.theta))["/"](I);
+            "32";
+            cyn.omg=cyn.omg["+"](alpha["*"](dt));
+            "33";
+            cyn.theta=cyn.theta["+"](cyn.omg["*"](dt));
+            "34";
+            cyn.pos = vec(l["*"](sin(cyn.theta)), l["-u"]()["*"](cos(cyn.theta)), 0);
+            "35";
+            line.visible = false;
+            "36";
+            line = curve(cyn.pos, celling.pos);
+            "37";
+            var RS_Iter1 = sands;
+            RS_Iter1 = ((typeof RS_Iter1[Symbol.iterator] === "function") ? (RS_Iter1 instanceof Map ? RS_Iter1.keys() : RS_Iter1) : Object.keys(RS_Iter1));
+            for (var RS_Index1 of RS_Iter1) {
+                sand = RS_Index1;
+                "38";
+                sand.pos=sand.pos["+"](sand.v["*"](dt));
+            }
+            "39";
+            RS_interpolate_kwargs.call(w, w.plot, [RS_desugar_kwargs({pos: [t, cyn.theta]})]);
+            "40";
+            t=t["+"](dt);
+        }
+    };
+    
+    ;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+    // END JAVASCRIPT
+    
+    //--><!]]></script>
+    </div>
 </body>
 </html>
