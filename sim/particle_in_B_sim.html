@@ -182,66 +182,68 @@
                 "41";
                 current = RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: vec(1.5, 0, 0), axis: vec(0, 0, .2), color: color.red})]);
                 "44";
-                particle = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: pos, radius: .05, v: v0, C: C, color: vec(0, 1, 0)})]);
-                "46";
+                particle = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: pos, radius: .05, v: v0, C: C, color: vec(0, 1, 0), make_trail: true})]);
+                "47";
                 force = RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: particle.pos, color: vec(1, 0, 0), shaftwidth: .03, axis: cross(particle.v, (await biot_savart(particle.pos)))["/"](10)})]);
-                "49";
+                "50";
                 velocity = RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: particle.pos, color: vec(0, 0, 1), shaftwidth: .03, axis: particle.v["/"](3)})]);
-                "52";
+                "53";
                 ;(await plot());
-                "54";
+                "55";
                 ;(await magnetic_field());
-                "56";
-                t = 0;
                 "57";
+                t = 0;
+                "58";
                 while (true) {
-                    "58";
-                    ;(await rate(1["/"](dt)));
                     "59";
-                    ;(await update(particle, force, velocity));
+                    ;(await rate(1["/"](dt)));
                     "60";
-                    current.pos = vec(1.5["*"](cos(t)), 0, 1.5["*"](sin(t)));
+                    ;(await update(particle, force, velocity));
                     "61";
-                    current.axis = vec(.2["-u"]()["*"](sin(t)), 0, .2["*"](cos(t)));
+                    current.pos = vec(1.5["*"](cos(t)), 0, 1.5["*"](sin(t)));
                     "62";
+                    current.axis = vec(.2["-u"]()["*"](sin(t)), 0, .2["*"](cos(t)));
+                    "63";
                     if (mag(particle.pos)[">"](3) || t[">"](5)) {
-                        "63";
-                        t = 0;
                         "64";
-                        particle.pos = (await frandom());
+                        t = 0;
                         "65";
+                        particle.pos = (await frandom());
+                        "66";
                         particle.v = 1.5["*"]((await frandom()));
+                        "67";
+                        particle.clear_trail();
                     }
-                    "66";
+                    "68";
                     t=t["+"](dt);
                 }
             };
         
-            "69";
+            "71";
             async function magnetic_field() {
                 var RS_ls, pos, B, theta, r, y;
-                "75";
+                "77";
                 var RS_Iter1 = (await frange(1["-u"](), .5, .5));
                 RS_Iter1 = ((typeof RS_Iter1[Symbol.iterator] === "function") ? (RS_Iter1 instanceof Map ? RS_Iter1.keys() : RS_Iter1) : Object.keys(RS_Iter1));
                 for (var RS_Index1 of RS_Iter1) {
                     y = RS_Index1;
-                    "76";
+                    "78";
                     var RS_Iter2 = (await frange(0, 2, .2));
                     RS_Iter2 = ((typeof RS_Iter2[Symbol.iterator] === "function") ? (RS_Iter2 instanceof Map ? RS_Iter2.keys() : RS_Iter2) : Object.keys(RS_Iter2));
                     for (var RS_Index2 of RS_Iter2) {
                         r = RS_Index2;
-                        "77";
+                        "79";
                         var RS_Iter3 = (await frange(0, 2["-u"]()["*"](pi), pi["-u"]()["/"](16)));
                         RS_Iter3 = ((typeof RS_Iter3[Symbol.iterator] === "function") ? (RS_Iter3 instanceof Map ? RS_Iter3.keys() : RS_Iter3) : Object.keys(RS_Iter3));
                         for (var RS_Index3 of RS_Iter3) {
                             theta = RS_Index3;
-                            "78";
+                            "80";
                             if (abs(r["-"](loop.radius))[">"](.1)) {
-                                "80";
+                                "82";
                                 pos = vec(r["*"](cos(theta)), y, r["*"](sin(theta)));
-                                "81";
-                                B = (await biot_savart(pos));
                                 "83";
+                                B = (await biot_savart(pos));
+                                "85";
                                 RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: pos, axis: hat(B), length: arrow_length, color: (await mag_field_color(B))})]);
                             }
                         }
@@ -249,118 +251,118 @@
                 }
             };
         
-            "86";
+            "88";
             async function biot_savart(pos) {
                 var RS_ls, RS_unpack, B, n, r, source, dl, theta;
-                "92";
+                "94";
                 RS_unpack = [vec(0, 0, 0), 1e3];
                 B = RS_unpack[0];
                 n = RS_unpack[1];
-                "93";
-                r = loop.radius;
                 "95";
+                r = loop.radius;
+                "97";
                 var RS_Iter4 = (await frange(0, 2["*"](pi), 2["*"](pi)["/"](n)));
                 RS_Iter4 = ((typeof RS_Iter4[Symbol.iterator] === "function") ? (RS_Iter4 instanceof Map ? RS_Iter4.keys() : RS_Iter4) : Object.keys(RS_Iter4));
                 for (var RS_Index4 of RS_Iter4) {
                     theta = RS_Index4;
-                    "96";
-                    source = vec(r["*"](cos(theta)), 0, r["*"](sin(theta)));
-                    "97";
-                    dl = 2["*"](pi)["*"](r)["/"](n)["*"](vec(r["-u"]()["*"](sin(theta)), 0, r["*"](cos(theta))));
                     "98";
+                    source = vec(r["*"](cos(theta)), 0, r["*"](sin(theta)));
+                    "99";
+                    dl = 2["*"](pi)["*"](r)["/"](n)["*"](vec(r["-u"]()["*"](sin(theta)), 0, r["*"](cos(theta))));
+                    "100";
                     try {
-                        "99";
+                        "101";
                         B=B["+"](mu["*"](loop.I)["/"](4)["/"](pi)["*"](cross(dl, pos["-"](source)))["/"](GS_power(mag(pos["-"](source)), 3)));
-                        "100";
+                        "102";
                     } catch (RS_Exception) {
                         RS_last_exception = RS_Exception;
                         if (RS_Exception instanceof ZeroDivisionError) {
-                            "101";
+                            "103";
                             print("zero division error");
                         } else {
                             throw RS_Exception;
                         }
                     }
                 }
-                "102";
+                "104";
                 return B;
             };
             if (!biot_savart.__argnames__) Object.defineProperties(biot_savart, {
                 __argnames__ : {value: ["pos"]}
             });
         
-            "105";
+            "107";
             async function mag_field_color(B) {
                 var RS_ls, a;
-                "107";
+                "109";
                 a = 1["/"](2e-6);
-                "108";
+                "110";
                 return vec(1["-"](log(a["*"](mag(B)))), 0, 1);
             };
             if (!mag_field_color.__argnames__) Object.defineProperties(mag_field_color, {
                 __argnames__ : {value: ["B"]}
             });
         
-            "111";
+            "113";
             async function plot() {
                 var RS_ls, g1, B, r;
-                "113";
+                "115";
                 g1 = RS_interpolate_kwargs.call(this, graph, [RS_desugar_kwargs({title: "magnetic field from the distance to center", width: 500, height: 300, align: "right", xtitle: "distance", ytitle: "magnetic field"})]);
-                "117";
-                B = RS_interpolate_kwargs.call(this, gdots, [RS_desugar_kwargs({graph: g1, color: color.blue})]);
                 "119";
+                B = RS_interpolate_kwargs.call(this, gdots, [RS_desugar_kwargs({graph: g1, color: color.blue})]);
+                "121";
                 var RS_Iter5 = (await frange(0, 5, .01));
                 RS_Iter5 = ((typeof RS_Iter5[Symbol.iterator] === "function") ? (RS_Iter5 instanceof Map ? RS_Iter5.keys() : RS_Iter5) : Object.keys(RS_Iter5));
                 for (var RS_Index5 of RS_Iter5) {
                     r = RS_Index5;
-                    "120";
+                    "122";
                     if (abs(r["-"](loop.radius))[">"](.1)) {
-                        "121";
+                        "123";
                         RS_interpolate_kwargs.call(B, B.plot, [RS_desugar_kwargs({pos: [r, mag((await biot_savart(vec(r, 0, 0))))]})]);
                     }
                 }
             };
         
-            "124";
+            "126";
             async function update(obj, force, velocity) {
                 var RS_ls, a;
-                "129";
-                a = obj.C["*"](cross(obj.v, (await biot_savart(obj.pos))))["/"](m);
-                "130";
-                obj.v=obj.v["+"](a["*"](dt));
                 "131";
-                obj.pos=obj.pos["+"](obj.v["*"](dt));
+                a = obj.C["*"](cross(obj.v, (await biot_savart(obj.pos))))["/"](m);
+                "132";
+                obj.v=obj.v["+"](a["*"](dt));
                 "133";
-                force.pos = obj.pos;
-                "134";
-                force.axis = m["*"](a)["/"](10);
+                obj.pos=obj.pos["+"](obj.v["*"](dt));
                 "135";
-                force.shaftwidth = .05;
+                force.pos = obj.pos;
                 "136";
-                velocity.pos = obj.pos;
+                force.axis = m["*"](a)["/"](10);
                 "137";
-                velocity.axis = obj.v["/"](3);
+                force.shaftwidth = .05;
                 "138";
+                velocity.pos = obj.pos;
+                "139";
+                velocity.axis = obj.v["/"](3);
+                "140";
                 velocity.shaftwidth = .05;
             };
             if (!update.__argnames__) Object.defineProperties(update, {
                 __argnames__ : {value: ["obj", "force", "velocity"]}
             });
         
-            "141";
+            "143";
             async function frandom() {
                 var RS_ls, x, y, z;
-                "145";
-                x = (random()[">"](.5)) ? random() : random()["-u"]();
-                "146";
-                y = (random()[">"](.5)) ? random() : random()["-u"]();
                 "147";
-                z = (random()[">"](.5)) ? random() : random()["-u"]();
+                x = (random()[">"](.5)) ? random() : random()["-u"]();
                 "148";
+                y = (random()[">"](.5)) ? random() : random()["-u"]();
+                "149";
+                z = (random()[">"](.5)) ? random() : random()["-u"]();
+                "150";
                 return vec(x, y, z);
             };
         
-            "150";
+            "152";
             async function frange() {
                 var start = ( 0 === arguments.length["-"](1) && arguments[arguments.length["-"](1)] !== null && typeof arguments[arguments.length["-"](1)] === "object" && arguments[arguments.length["-"](1)] [RS_kwargs_symbol] === true) ? undefined : arguments[0];
                 var stop = ( 1 === arguments.length["-"](1) && arguments[arguments.length["-"](1)] !== null && typeof arguments[arguments.length["-"](1)] === "object" && arguments[arguments.length["-"](1)] [RS_kwargs_symbol] === true) ? undefined : arguments[1];
@@ -371,11 +373,11 @@
                     step = RS_kwargs_obj.step;
                 }
                 var RS_ls, n;
-                "155";
+                "157";
                 n = int(round(stop["-"](start)["/"](float(step))));
-                "156";
+                "158";
                 if (n[">"](1)) {
-                    "157";
+                    "159";
                     return (function() {
                         var RS_Iter = range(n["+"](1)), RS_Result = [], i;
                         RS_Iter = ((typeof RS_Iter[Symbol.iterator] === "function") ? (RS_Iter instanceof Map ? RS_Iter.keys() : RS_Iter) : Object.keys(RS_Iter));
@@ -386,13 +388,13 @@
                         RS_Result = RS_list_constructor(RS_Result);
                         return RS_Result;
                     })();
-                    "158";
-                } else if ((n === 1 || typeof n === "object" && RS_equals(n, 1))) {
-                    "159";
-                    return RS_list_decorate([ start ]);
                     "160";
-                } else {
+                } else if ((n === 1 || typeof n === "object" && RS_equals(n, 1))) {
                     "161";
+                    return RS_list_decorate([ start ]);
+                    "162";
+                } else {
+                    "163";
                     return RS_list_decorate([]);
                 }
             };
@@ -402,7 +404,7 @@
                 __argnames__ : {value: ["start", "stop", "step"]}
             });
         
-            "164";
+            "166";
             ;(await main());
         };
         

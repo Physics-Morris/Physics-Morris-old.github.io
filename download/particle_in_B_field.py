@@ -40,7 +40,8 @@ def main():
     current = arrow(pos=vec(1.5, 0, 0), axis=vec(0, 0, .2),
                     color=color.red)
     # create particle
-    particle = sphere(pos=pos, radius=.05, v=v0, C=C, color=vec(0, 1, 0))
+    particle = sphere(pos=pos, radius=.05, v=v0, C=C, color=vec(0, 1, 0),
+                      make_trail=True)
     # create a arrow that represent force excert on particle
     force = arrow(pos=particle.pos, color=vec(1, 0, 0), shaftwidth=.03,
                   axis=cross(particle.v, biot_savart(particle.pos))/10)
@@ -62,6 +63,7 @@ def main():
             t = 0
             particle.pos = frandom()
             particle.v = 1.5*frandom()
+            particle.clear_trail()
         t += dt
 
 
