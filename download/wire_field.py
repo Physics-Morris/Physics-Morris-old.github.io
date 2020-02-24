@@ -23,8 +23,7 @@ def main():
     global wire
 
     # create scene
-    scene = canvas(width=1000, height=600, userzoom=False, userspan=False,
-                   range=5, align='left')
+    scene = canvas(width=1000, height=600, range=5, align='left')
     # control scene camera location
     scene.camera.pos = vec(0, 6, 7)
     scene.camera.axis=vec(0, -2, -2)
@@ -54,15 +53,15 @@ def magnetic_field():
     '''
     # use cylindrical coordinate to distribute arrow around wire
     # for z in frange(-3, 4, 3):
-    z = 0
-    for r in frange(1, 5, .5):
-        for theta in frange(0, -2*pi, -pi/8):
-            # transform coordinate
-            pos = vec(r*cos(theta), z, r*sin(theta))
-            B = biot_savart(pos)
-            # create smae length of arrow
-            arrow(pos=pos, axis=hat(B), length=arrow_length,
-                  color=mag_field_color(B))
+    for z in frange(-2, 4, 2):
+        for r in frange(1, 5, .5):
+            for theta in frange(0, -2*pi, -pi/8):
+                # transform coordinate
+                pos = vec(r*cos(theta), z, r*sin(theta))
+                B = biot_savart(pos)
+                # create smae length of arrow
+                arrow(pos=pos, axis=hat(B), length=arrow_length,
+                      color=mag_field_color(B))
 
 def biot_savart(pos):
     '''
