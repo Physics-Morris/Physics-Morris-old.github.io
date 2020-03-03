@@ -125,7 +125,7 @@
             RS_modules.pythonize.strings = strings;
         })();
         async function __main__() {
-            var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, k, ec, radius, field, arrow_length, dt, m, charges;
+            var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, k, ec, radius, arrow_length, dt, m, up_plate, down_plate, pos, E, charge_pos, q, charge_z, charge_y, charge_x, color, z, y, x, moving_charge, a;
             version = RS_list_decorate([ "2.9", "glowscript" ]);
             Array.prototype['+']=function(r) {return this.concat(r)}
             Array.prototype['*']=function(r) {return __array_times_number(this, r)}
@@ -157,148 +157,100 @@
             "10";
             radius = 1.2e-14;
             "11";
-            field = RS_list_decorate([]);
-            "12";
             arrow_length = 3e-14;
+            "12";
+            dt = .1;
             "13";
-            dt = .01;
-            "14";
-            m = 1.6e-27;
+            m = 1.6e-10;
             "16";
-            async function main() {
-                var RS_ls, scene, up_plate, down_plate, mu, z, y, x, moving_charge;
-                "19";
-                scene = RS_interpolate_kwargs.call(this, canvas, [RS_desugar_kwargs({width: 1e3, height: 600, align: "left", range: 3e-13})]);
-                "22";
-                up_plate = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vec(0, 1e-13, 0), size: vec(4e-13, 4e-16, 4e-13), color: color.blue})]);
-                "24";
-                down_plate = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vec(1, 1e-13["-u"](), 0), size: vec(4e-13, 4e-16, 4e-13), color: color.red})]);
-                "28";
-                for (var RS_Index1 = 20["-u"](); RS_Index1["<"](22); RS_Index1=RS_Index1["+"](2)) {
-                    x = RS_Index1;
-                    "29";
-                    var RS_Iter2 = RS_list_decorate([ up_plate.pos.y, down_plate.pos.y ]);
-                    RS_Iter2 = ((typeof RS_Iter2[Symbol.iterator] === "function") ? (RS_Iter2 instanceof Map ? RS_Iter2.keys() : RS_Iter2) : Object.keys(RS_Iter2));
-                    for (var RS_Index2 of RS_Iter2) {
-                        y = RS_Index2;
-                        "30";
-                        for (var RS_Index3 = 20["-u"](); RS_Index3["<"](22); RS_Index3=RS_Index3["+"](2)) {
-                            z = RS_Index3;
+            scene = RS_interpolate_kwargs.call(this, canvas, [RS_desugar_kwargs({width: 1e3, height: 600, align: "left", range: 3e-13})]);
+            "19";
+            up_plate = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vec(0, 1e-13, 0), size: vec(4e-13, 4e-16, 4e-13), color: vec(1, 0, 0)})]);
+            "20";
+            down_plate = RS_interpolate_kwargs.call(this, box, [RS_desugar_kwargs({pos: vec(0, 1e-13["-u"](), 0), size: vec(4e-13, 4e-16, 4e-13), color: vec(0, 0, 1)})]);
+            "24";
+            for (var RS_Index1 = 24["-u"](); RS_Index1["<"](24); RS_Index1=RS_Index1["+"](4)) {
+                x = RS_Index1;
+                "25";
+                for (var RS_Index2 = 24["-u"](); RS_Index2["<"](24); RS_Index2=RS_Index2["+"](4)) {
+                    y = RS_Index2;
+                    "26";
+                    for (var RS_Index3 = 9["-u"](); RS_Index3["<"](9); RS_Index3=RS_Index3["+"](4)) {
+                        z = RS_Index3;
+                        "27";
+                        pos = vec(x["*"](2e-14), y["*"](1e-14), z["*"](2e-14));
+                        "29";
+                        E = vec(0, 0, 0);
+                        "31";
+                        for (var RS_Index4 = 20["-u"](); RS_Index4["<"](21); RS_Index4++) {
+                            charge_x = RS_Index4;
                             "32";
-                            if (y[">"](0)) {
-                                mu = 1;
-                            } else {
-                                mu = 1["-u"]();
+                            var RS_Iter5 = RS_list_decorate([ up_plate.pos.y, down_plate.pos.y ]);
+                            RS_Iter5 = ((typeof RS_Iter5[Symbol.iterator] === "function") ? (RS_Iter5 instanceof Map ? RS_Iter5.keys() : RS_Iter5) : Object.keys(RS_Iter5));
+                            for (var RS_Index5 of RS_Iter5) {
+                                charge_y = RS_Index5;
+                                "33";
+                                for (var RS_Index6 = 20["-u"](); RS_Index6["<"](21); RS_Index6++) {
+                                    charge_z = RS_Index6;
+                                    "34";
+                                    charge_pos = vec(charge_x["*"](1e-14), charge_y, charge_z["*"](1e-14));
+                                    "36";
+                                    if (charge_y[">"](0)) {
+                                        q = 1e-6;
+                                    } else {
+                                        q = 1e-6["-u"]();
+                                    }
+                                    "38";
+                                    E=E["+"](k["*"](q)["*"](pos["-"](charge_pos))["/"](GS_power(mag(pos["-"](charge_pos)), 3)));
+                                }
                             }
-                            "34";
-                            ;(await Create_Charge(vec(x["*"](1e-14), y, z["*"](1e-14)), mu));
+                        }
+                        "40";
+                        color = vec(1, 1["-"](exp(1e-17["-u"]()["*"](mag(E)))), 0);
+                        "41";
+                        RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: pos, axis: hat(E)["*"](arrow_length), color: color})]);
+                    }
+                }
+            }
+            "44";
+            moving_charge = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vec(5e-13["-u"](), 5e-14, 0), radius: radius, coulomb: 5e-38["*"](ec), v: vec(1e-13, 0, 0), make_trail: true})]);
+            "48";
+            while (true) {
+                "49";
+                ;(await rate(1["/"](dt)));
+                "51";
+                E = vec(0, 0, 0);
+                "53";
+                for (var RS_Index7 = 20["-u"](); RS_Index7["<"](22); RS_Index7=RS_Index7["+"](2)) {
+                    charge_x = RS_Index7;
+                    "54";
+                    var RS_Iter8 = RS_list_decorate([ up_plate.pos.y, down_plate.pos.y ]);
+                    RS_Iter8 = ((typeof RS_Iter8[Symbol.iterator] === "function") ? (RS_Iter8 instanceof Map ? RS_Iter8.keys() : RS_Iter8) : Object.keys(RS_Iter8));
+                    for (var RS_Index8 of RS_Iter8) {
+                        charge_y = RS_Index8;
+                        "55";
+                        for (var RS_Index9 = 20["-u"](); RS_Index9["<"](22); RS_Index9=RS_Index9["+"](2)) {
+                            charge_z = RS_Index9;
+                            "56";
+                            charge_pos = vec(charge_x["*"](1e-14), charge_y, charge_z["*"](1e-14));
+                            "58";
+                            if (charge_y[">"](0)) {
+                                q = 1e-6;
+                            } else {
+                                q = 1e-6["-u"]();
+                            }
+                            "60";
+                            E=E["+"](k["*"](q)["*"](moving_charge.pos["-"](charge_pos))["/"](GS_power(mag(moving_charge.pos["-"](charge_pos)), 3)));
                         }
                     }
                 }
-                "37";
-                for (var RS_Index4 = 20["-u"](); RS_Index4["<"](20); RS_Index4=RS_Index4["+"](4)) {
-                    x = RS_Index4;
-                    "38";
-                    for (var RS_Index5 = 20["-u"](); RS_Index5["<"](20); RS_Index5=RS_Index5["+"](4)) {
-                        y = RS_Index5;
-                        "39";
-                        for (var RS_Index6 = 9["-u"](); RS_Index6["<"](9); RS_Index6=RS_Index6["+"](4)) {
-                            z = RS_Index6;
-                            "40";
-                            ;(await Create_Field(vec(x["*"](2e-14), y["*"](1e-14), z["*"](2e-14))));
-                        }
-                    }
-                }
-                "43";
-                moving_charge = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vec(4e-13["-u"](), 5e-14, 0), radius: radius, coulomb: 5e-42["*"](ec), color: color.green, v: vec(1.5e-13, 0, 0), make_trail: true})]);
-                "48";
-                while (true) {
-                    "49";
-                    ;(await rate(1["/"](dt)));
-                    "51";
-                    ;(await Update(moving_charge));
-                }
-            };
-        
-            "53";
-            charges = RS_list_decorate([]);
-            "54";
-            async function Create_Charge(pos, C) {
-                var RS_ls, charge;
-                ;(await sleep(.2));
-                "56";
-                charge = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: pos, radius: radius, coulomb: C["*"](ec)})]);
-                "58";
-                if (C[">"](0)) {
-                    charge.color = color.blue;
-                } else {
-                    charge.color = color.red;
-                }
-                "61";
-                charges.append(charge);
-            };
-            if (!Create_Charge.__argnames__) Object.defineProperties(Create_Charge, {
-                __argnames__ : {value: ["pos", "C"]}
-            });
-        
-            "63";
-            async function Create_Field(pos) {
-                var RS_ls, E, charge, color;
-                "66";
-                E = vec(0, 0, 0);
-                "68";
-                var RS_Iter7 = charges;
-                RS_Iter7 = ((typeof RS_Iter7[Symbol.iterator] === "function") ? (RS_Iter7 instanceof Map ? RS_Iter7.keys() : RS_Iter7) : Object.keys(RS_Iter7));
-                for (var RS_Index7 of RS_Iter7) {
-                    charge = RS_Index7;
-                    "69";
-                    E=E["+"](k["*"](charge.coulomb)["*"](pos["-"](charge.pos))["/"](GS_power(mag(pos["-"](charge.pos)), 3)));
-                }
-                "71";
-                color = (await Mapping(mag(E)));
-                "72";
-                field.append(RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: pos, axis: hat(E)["*"](arrow_length), color: vec(1, color, 0)})]));
-            };
-            if (!Create_Field.__argnames__) Object.defineProperties(Create_Field, {
-                __argnames__ : {value: ["pos"]}
-            });
-        
-            "76";
-            async function Mapping(E) {
-                var RS_ls, a;
-                "78";
-                a = 1e-17;
-                "79";
-                return 1["-"](exp(a["-u"]()["*"](E)));
-            };
-            if (!Mapping.__argnames__) Object.defineProperties(Mapping, {
-                __argnames__ : {value: ["E"]}
-            });
-        
-            "82";
-            async function Update(obj) {
-                var RS_ls, E, charge;
-                "85";
-                E = vec(0, 0, 0);
-                "87";
-                var RS_Iter8 = charges;
-                RS_Iter8 = ((typeof RS_Iter8[Symbol.iterator] === "function") ? (RS_Iter8 instanceof Map ? RS_Iter8.keys() : RS_Iter8) : Object.keys(RS_Iter8));
-                for (var RS_Index8 of RS_Iter8) {
-                    charge = RS_Index8;
-                    "88";
-                    E=E["+"](k["*"](charge.coulomb)["*"](obj.pos["-"](charge.pos))["/"](GS_power(mag(obj.pos["-"](charge.pos)), 3)));
-                }
-                "90";
-                obj.v=obj.v["+"](obj.coulomb["*"](E)["/"](m)["*"](dt));
-                "91";
-                obj.pos=obj.pos["+"](obj.v["*"](dt));
-            };
-            if (!Update.__argnames__) Object.defineProperties(Update, {
-                __argnames__ : {value: ["obj"]}
-            });
-        
-            "93";
-            ;(await main());
+                "62";
+                a = moving_charge.coulomb["*"](E)["/"](m);
+                "63";
+                moving_charge.v=moving_charge.v["+"](a["*"](dt));
+                "64";
+                moving_charge.pos=moving_charge.pos["+"](moving_charge.v["*"](dt));
+            }
         };
         
         ;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
