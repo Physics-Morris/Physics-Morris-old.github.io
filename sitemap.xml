@@ -9,93 +9,183 @@
 
 <url>
   <loc>https://morrishuang-skipper.github.io/</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://morrishuang-skipper.github.io/index.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/page1.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/about.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/page2.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/simulations.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/1_motion_of_wedge.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/sim/wedge_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/2_motion_of_moon.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/code/wedge_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/3_code.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/sim/moon_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/4_block_rotation.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/code/moon_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/6_point_charge.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/sim/oscillate_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/7_Dipole.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/code/oscillate_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/8_charge_motion.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/sim/pendulum_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/9_code.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/code/pendulum_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/10_code.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/sim/rotate_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/demo.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
+  <loc>https://morrishuang-skipper.github.io/code/rotate_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/9_full_code.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://morrishuang-skipper.github.io/sim/charge_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/9_sim.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://morrishuang-skipper.github.io/code/charge_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/10_full_code.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://morrishuang-skipper.github.io/sim/dipole_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://morrishuang-skipper.github.io/sim/10_sim.html</loc>
-  <lastmod>2020-02-17T16:03:56+00:00</lastmod>
-  <priority>0.51</priority>
+  <loc>https://morrishuang-skipper.github.io/code/dipole_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/sim/capacitor_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/code/capacitor_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/sim/dipole_potential_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/code/dipole_potential_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/sim/dipole_motion_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/code/dipole_motion_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/sim/radom_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/code/random_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/sim/wire_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/code/wire_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/sim/ring_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/code/ring_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/sim/particle_in_B_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/code/particle_in_B_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/sim/earth_field_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/code/earth_field_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/sim/earth_shield_sim.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://morrishuang-skipper.github.io/code/earth_shield_code.html</loc>
+  <lastmod>2020-03-16T06:52:53+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
