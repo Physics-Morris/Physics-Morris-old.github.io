@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "PhysSim",
-    "currentPage": "simulations.html",
+    "currentPage": "index.html",
     "theme": {
       "name": "mobirise4",
       "title": "Mobirise 4",
@@ -797,7 +797,7 @@
                 "alt": "",
                 "title": "",
                 "customStyle1": "display-7",
-                "caption": "Wedge",
+                "caption": "Dipole Material",
                 "active": true
               }
             ]
