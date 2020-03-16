@@ -78,7 +78,7 @@
     <script src="assets/dropdown/js/navbar-dropdown.js"></script>
     <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
     <script src="assets/theme/js/script.js"></script>
-<div id="glowscript" class="glowscript">
+<div id="glowscript" class="glowscript"><div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://s3.amazonaws.com/glowscript/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
@@ -124,7 +124,7 @@ RS_modules.pythonize = {};
     RS_modules.pythonize.strings = strings;
 })();
 async function __main__() {
-    var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, mu, arrow_length, dt, I, G, M, loop, current, particles, x, y, z, vx, vy, vz, RS_unpack, r, g, b, numbers, pos, temp, B, n, source, dl, theta, times, phi, R, t, Fg, a, particle;
+    var version, box, sphere, simple_sphere, cylinder, pyramid, cone, helix, ellipsoid, ring, arrow, compound, display, vector, print, arange, type, scene, RS_ls, mu, arrow_length, dt, I, G, M, loop, particles, x, y, z, vx, vy, vz, RS_unpack, r, g, b, numbers, pos, temp, B, n, source, dl, theta, times, phi, R, t, Fg, a, particle;
     version = RS_list_decorate([ "2.9", "glowscript" ]);
     Array.prototype['+']=function(r) {return this.concat(r)}
     Array.prototype['*']=function(r) {return __array_times_number(this, r)}
@@ -191,182 +191,177 @@ async function __main__() {
         __argnames__ : {value: ["start", "stop", "step"]}
     });
 
-    "17";
-    mu = 4["*"](pi)["*"](1e-7);
-    "18";
-    arrow_length = .3;
     "19";
-    dt = .01;
+    mu = 4["*"](pi)["*"](1e-7);
     "20";
-    I = 50;
+    arrow_length = .3;
     "21";
-    G = 6.6e-11;
+    dt = .01;
     "22";
+    I = 50;
+    "23";
+    G = 6.6e-11;
+    "24";
     M = 6e24;
-    "25";
+    "27";
     scene = RS_interpolate_kwargs.call(this, canvas, [RS_desugar_kwargs({width: 1e3, height: 600, range: 10, align: "left"})]);
-    "32";
+    "30";
     loop = RS_interpolate_kwargs.call(this, ring, [RS_desugar_kwargs({pos: vec(0, 0, 0), radius: 1.5, axis: vec(0, 1, 0), opacity: .5, I: I})]);
-    "36";
-    current = RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: vec(1.5, 0, 0), axis: vec(0, 0, .4["-u"]()), color: color.red})]);
-    "40";
+    "35";
     particles = RS_list_decorate([]);
-    "41";
+    "36";
     for (var RS_Index1 = 0; RS_Index1["<"](100); RS_Index1++) {
         numbers = RS_Index1;
-        "43";
+        "38";
         x = (random()[">"](.5)) ? 10["*"](random()) : 10["-u"]()["*"](random());
-        "44";
+        "39";
         y = (random()[">"](.5)) ? 10["*"](random()) : 10["-u"]()["*"](random());
-        "45";
+        "40";
         z = (random()[">"](.5)) ? 10["*"](random()) : 10["-u"]()["*"](random());
-        "46";
+        "41";
         if (x[">"](0)) {
-            vx = 15["-u"]()["*"](random());
+            vx = random()["-u"]();
         } else {
-            vx = 15["*"](random());
+            vx = random();
         }
-        "48";
+        "43";
         if (y[">"](0)) {
-            vy = 15["-u"]()["*"](random());
+            vy = random()["-u"]();
         } else {
-            vy = 15["*"](random());
+            vy = random();
         }
-        "50";
+        "45";
         if (z[">"](0)) {
-            vz = 15["-u"]()["*"](random());
+            vz = random()["-u"]();
         } else {
-            vz = 15["*"](random());
+            vz = random();
         }
-        "52";
+        "47";
         RS_unpack = [random(), random(), random()];
         r = RS_unpack[0];
         g = RS_unpack[1];
         b = RS_unpack[2];
-        "53";
-        particles.append(RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vec(x, y, z), v: vec(vx, vy, vz), color: vec(r, g, b), M: random()["/"](10), Q: random()["*"](1e6), radius: .1, make_trail: true, retain: 50})]));
+        "48";
+        particles.append(RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vec(x, y, z), v: vec(vx, vy, vz), color: vec(r, g, b), M: random()["/"](10), Q: random()["*"](1e6), radius: .1, make_trail: true})]));
     }
-    "57";
+    "52";
     var RS_Iter2 = (await frange(.6, .4, .2["-u"]()));
     RS_Iter2 = ((typeof RS_Iter2[Symbol.iterator] === "function") ? (RS_Iter2 instanceof Map ? RS_Iter2.keys() : RS_Iter2) : Object.keys(RS_Iter2));
     for (var RS_Index2 of RS_Iter2) {
         R = RS_Index2;
-        "58";
+        "53";
         var RS_Iter3 = (await frange(0, 2["-u"]()["*"](pi), pi["-u"]()["/"](4)));
         RS_Iter3 = ((typeof RS_Iter3[Symbol.iterator] === "function") ? (RS_Iter3 instanceof Map ? RS_Iter3.keys() : RS_Iter3) : Object.keys(RS_Iter3));
         for (var RS_Index3 of RS_Iter3) {
             phi = RS_Index3;
-            "60";
+            "55";
             pos = vec(R["*"](cos(phi)), .01["-u"](), R["*"](sin(phi)));
-            "62";
+            "57";
             while (true) {
-                "63";
+                "58";
                 temp = pos;
-                "64";
+                "59";
                 for (var RS_Index4 = 0; RS_Index4["<"](10); RS_Index4++) {
                     times = RS_Index4;
-                    "66";
+                    "61";
                     RS_unpack = [vec(0, 0, 0), 500];
                     B = RS_unpack[0];
                     n = RS_unpack[1];
-                    "67";
+                    "62";
                     r = loop.radius;
-                    "70";
+                    "65";
                     var RS_Iter5 = (await frange(0, 2["*"](pi), 2["*"](pi)["/"](n)));
                     RS_Iter5 = ((typeof RS_Iter5[Symbol.iterator] === "function") ? (RS_Iter5 instanceof Map ? RS_Iter5.keys() : RS_Iter5) : Object.keys(RS_Iter5));
                     for (var RS_Index5 of RS_Iter5) {
                         theta = RS_Index5;
-                        "71";
+                        "66";
                         source = vec(r["*"](cos(theta)), 0, r["*"](sin(theta)));
-                        "72";
+                        "67";
                         dl = 2["*"](pi)["*"](r)["/"](n)["*"](vec(r["-u"]()["*"](sin(theta)), 0, r["*"](cos(theta))));
-                        "73";
+                        "68";
                         try {
-                            "74";
+                            "69";
                             B=B["+"](mu["*"](loop.I)["/"](4)["/"](pi)["*"](cross(dl, pos["-"](source)))["/"](GS_power(mag(pos["-"](source)), 3)));
-                            "75";
+                            "70";
                         } catch (RS_Exception) {
                             RS_last_exception = RS_Exception;
                             if (RS_Exception instanceof ZeroDivisionError) {
-                                "76";
+                                "71";
                                 print("zero division error");
                             } else {
                                 throw RS_Exception;
                             }
                         }
                     }
-                    "79";
+                    "74";
                     pos=pos["+"](hat(B)["*"](arrow_length)["/"](10));
                 }
-                "82";
+                "77";
                 RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: pos, axis: hat(B), length: arrow_length, color: vec(log(1e7["*"](mag(B))), 0, 1)})]);
-                "85";
+                "80";
                 if (temp.y["*"](pos.y)["<="](0) && temp.y[">"](0)) {
-                    "86";
+                    "81";
                     break;
                 }
             }
         }
     }
-    "89";
+    "84";
     t = 0;
-    "90";
+    "85";
     while (true) {
-        "91";
+        "86";
         ;(await rate(1["/"](dt)));
-        "94";
-        current.pos = vec(1.5["*"](cos(t)), 0, 1.5["*"](sin(t)));
-        "95";
-        current.axis = vec(.4["-u"]()["*"](sin(t)), 0, .4["*"](cos(t)));
-        "97";
+        "88";
         var RS_Iter6 = particles;
         RS_Iter6 = ((typeof RS_Iter6[Symbol.iterator] === "function") ? (RS_Iter6 instanceof Map ? RS_Iter6.keys() : RS_Iter6) : Object.keys(RS_Iter6));
         for (var RS_Index6 of RS_Iter6) {
             particle = RS_Index6;
-            "98";
-            if (mag(particle.pos)["<"](1.5)) {
-                particle.visible = false;
+            "89";
+            if (mag(particle.pos)["<"](1.5) || mag(particle.pos)[">"](10)) {
+                "90";
+                particle.visible = true;
             }
-            "100";
+            "92";
             RS_unpack = [vec(0, 0, 0), 500];
             B = RS_unpack[0];
             n = RS_unpack[1];
-            "101";
+            "93";
             r = loop.radius;
-            "104";
+            "96";
             var RS_Iter7 = (await frange(0, 2["*"](pi), 2["*"](pi)["/"](n)));
             RS_Iter7 = ((typeof RS_Iter7[Symbol.iterator] === "function") ? (RS_Iter7 instanceof Map ? RS_Iter7.keys() : RS_Iter7) : Object.keys(RS_Iter7));
             for (var RS_Index7 of RS_Iter7) {
                 theta = RS_Index7;
-                "105";
+                "97";
                 source = vec(r["*"](cos(theta)), 0, r["*"](sin(theta)));
-                "106";
+                "98";
                 dl = 2["*"](pi)["*"](r)["/"](n)["*"](vec(r["-u"]()["*"](sin(theta)), 0, r["*"](cos(theta))));
-                "107";
+                "99";
                 try {
-                    "108";
+                    "100";
                     B=B["+"](mu["*"](loop.I)["/"](4)["/"](pi)["*"](cross(dl, particle.pos["-"](source)))["/"](GS_power(mag(particle.pos["-"](source)), 3)));
-                    "109";
+                    "101";
                 } catch (RS_Exception) {
                     RS_last_exception = RS_Exception;
                     if (RS_Exception instanceof ZeroDivisionError) {
-                        "110";
+                        "102";
                         print("zero division error");
                     } else {
                         throw RS_Exception;
                     }
                 }
             }
-            "114";
+            "106";
             Fg = vec(0, 0, 0);
-            "116";
+            "108";
             a = particle.Q["*"](cross(particle.v, B))["+"](Fg)["/"](particle.M);
-            "117";
+            "109";
             particle.v=particle.v["+"](a["*"](dt));
-            "118";
+            "110";
             particle.pos=particle.pos["+"](particle.v["*"](dt));
         }
-        "119";
+        "111";
         t=t["+"](dt);
     }
 };
@@ -375,6 +370,6 @@ async function __main__() {
 // END JAVASCRIPT
 
 //--><!]]></script>
-</div>
+</div></div>
 </body>
 </html>
