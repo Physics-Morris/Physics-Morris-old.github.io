@@ -78,8 +78,7 @@
     <script src="assets/dropdown/js/navbar-dropdown.js"></script>
     <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
     <script src="assets/theme/js/script.js"></script>
-    
-    <div id="glowscript" class="glowscript"><div id="glowscript" class="glowscript">
+<div id="glowscript" class="glowscript">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link type="text/css" href="https://s3.amazonaws.com/glowscript/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
@@ -215,12 +214,12 @@ async function __main__() {
     "37";
     dipoles = RS_list_decorate([]);
     "38";
-    var RS_Iter1 = (await frange(200["-u"]()["*"](radius), 200["*"](radius), 40["*"](radius)));
+    var RS_Iter1 = (await frange(200["-u"]()["*"](radius), 200["*"](radius), 15["*"](radius)));
     RS_Iter1 = ((typeof RS_Iter1[Symbol.iterator] === "function") ? (RS_Iter1 instanceof Map ? RS_Iter1.keys() : RS_Iter1) : Object.keys(RS_Iter1));
     for (var RS_Index1 of RS_Iter1) {
         x = RS_Index1;
         "39";
-        var RS_Iter2 = (await frange(170["-u"]()["*"](radius), 170["*"](radius), 40["*"](radius)));
+        var RS_Iter2 = (await frange(170["-u"]()["*"](radius), 170["*"](radius), 15["*"](radius)));
         RS_Iter2 = ((typeof RS_Iter2[Symbol.iterator] === "function") ? (RS_Iter2 instanceof Map ? RS_Iter2.keys() : RS_Iter2) : Object.keys(RS_Iter2));
         for (var RS_Index2 of RS_Iter2) {
             y = RS_Index2;
@@ -231,15 +230,15 @@ async function __main__() {
             "42";
             dis = GS_power((GS_power(axis_x, 2)["+"](GS_power(axis_y, 2))), .5);
             "43";
-            RS_unpack = [axis_x["/"](dis)["*"](20)["*"](radius), axis_y["/"](dis)["*"](20)["*"](radius)];
+            RS_unpack = [axis_x["/"](dis)["*"](radius)["*"](8), axis_y["/"](dis)["*"](radius)["*"](8)];
             axis_x = RS_unpack[0];
             axis_y = RS_unpack[1];
             "44";
             axis = vec(axis_x, axis_y, 0);
             "45";
-            dipole_1 = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vec(x, y, 0), radius: 5["*"](radius), C: ec["-u"](), make_trail: true, color: vec(1, 0, 0)})]);
+            dipole_1 = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vec(x, y, 0), radius: 2["*"](radius), C: ec["-u"](), make_trail: true, color: vec(1, 0, 0)})]);
             "47";
-            dipole_2 = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: dipole_1.pos["+"](axis), radius: 5["*"](radius), C: ec, make_trail: true, color: vec(0, 0, 1)})]);
+            dipole_2 = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: dipole_1.pos["+"](axis), radius: 2["*"](radius), C: ec, make_trail: true, color: vec(0, 0, 1)})]);
             "49";
             RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: dipole_2.pos, axis: dipole_1.pos["-"](dipole_2.pos)["*"](.8), color: vec(0, 1, 0)})]);
             "50";
@@ -249,7 +248,7 @@ async function __main__() {
     "53";
     p0 = vec(250["-u"]()["*"](radius), 0, 0);
     "55";
-    vx = 150["*"](random())["*"](radius);
+    vx = 100["*"](radius);
     "56";
     v0 = vec(vx, 0, 0);
     "58";
@@ -257,7 +256,7 @@ async function __main__() {
     "59";
     color = (sign["<"](0)) ? vec(1, 0, 0) : vec(0, 0, 1);
     "60";
-    free_charge = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: p0, radius: 5["*"](radius), C: 1e-42["*"](ec)["*"](sign), make_trail: true, color: color, v: v0})]);
+    free_charge = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: p0, radius: 2["*"](radius), C: 1e-42["*"](ec)["*"](sign), make_trail: true, color: color, v: v0})]);
     "65";
     while (true) {
         "66";
@@ -277,12 +276,12 @@ async function __main__() {
             "74";
             dipoles = RS_list_decorate([]);
             "75";
-            var RS_Iter4 = (await frange(200["-u"]()["*"](radius), 200["*"](radius), 40["*"](radius)));
+            var RS_Iter4 = (await frange(200["-u"]()["*"](radius), 200["*"](radius), 15["*"](radius)));
             RS_Iter4 = ((typeof RS_Iter4[Symbol.iterator] === "function") ? (RS_Iter4 instanceof Map ? RS_Iter4.keys() : RS_Iter4) : Object.keys(RS_Iter4));
             for (var RS_Index4 of RS_Iter4) {
                 x = RS_Index4;
                 "76";
-                var RS_Iter5 = (await frange(170["-u"]()["*"](radius), 170["*"](radius), 40["*"](radius)));
+                var RS_Iter5 = (await frange(170["-u"]()["*"](radius), 170["*"](radius), 15["*"](radius)));
                 RS_Iter5 = ((typeof RS_Iter5[Symbol.iterator] === "function") ? (RS_Iter5 instanceof Map ? RS_Iter5.keys() : RS_Iter5) : Object.keys(RS_Iter5));
                 for (var RS_Index5 of RS_Iter5) {
                     y = RS_Index5;
@@ -293,15 +292,15 @@ async function __main__() {
                     "79";
                     dis = GS_power((GS_power(axis_x, 2)["+"](GS_power(axis_y, 2))), .5);
                     "80";
-                    RS_unpack = [axis_x["/"](dis)["*"](20)["*"](radius), axis_y["/"](dis)["*"](20)["*"](radius)];
+                    RS_unpack = [axis_x["/"](dis)["*"](radius)["*"](8), axis_y["/"](dis)["*"](radius)["*"](8)];
                     axis_x = RS_unpack[0];
                     axis_y = RS_unpack[1];
                     "81";
                     axis = vec(axis_x, axis_y, 0);
                     "82";
-                    dipole_1 = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vec(x, y, 0), radius: 5["*"](radius), C: ec["-u"](), make_trail: true, color: vec(1, 0, 0)})]);
+                    dipole_1 = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: vec(x, y, 0), radius: 2["*"](radius), C: ec["-u"](), make_trail: true, color: vec(1, 0, 0)})]);
                     "84";
-                    dipole_2 = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: dipole_1.pos["+"](axis), radius: 5["*"](radius), C: ec, make_trail: true, color: vec(0, 0, 1)})]);
+                    dipole_2 = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: dipole_1.pos["+"](axis), radius: 2["*"](radius), C: ec, make_trail: true, color: vec(0, 0, 1)})]);
                     "86";
                     RS_interpolate_kwargs.call(this, arrow, [RS_desugar_kwargs({pos: dipole_2.pos, axis: dipole_1.pos["-"](dipole_2.pos)["*"](.8), color: vec(0, 1, 0)})]);
                     "87";
@@ -313,7 +312,7 @@ async function __main__() {
             "93";
             p0 = vec(250["-u"]()["*"](radius), 0, 0);
             "95";
-            vx = 150["*"](random())["*"](radius);
+            vx = 100["*"](radius);
             "96";
             v0 = vec(vx, 0, 0);
             "98";
@@ -321,7 +320,7 @@ async function __main__() {
             "100";
             color = (sign["<"](0)) ? vec(1, 0, 0) : vec(0, 0, 1);
             "101";
-            free_charge = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: p0, radius: 5["*"](radius), C: 1e-42["*"](ec)["*"](sign), make_trail: true, color: color, v: v0})]);
+            free_charge = RS_interpolate_kwargs.call(this, sphere, [RS_desugar_kwargs({pos: p0, radius: 2["*"](radius), C: 1e-42["*"](ec)["*"](sign), make_trail: true, color: color, v: v0})]);
         }
         "105";
         pos = free_charge.pos;
@@ -366,6 +365,6 @@ async function __main__() {
 // END JAVASCRIPT
 
 //--><!]]></script>
-</div></div>
+</div>    
 </body>
 </html>
